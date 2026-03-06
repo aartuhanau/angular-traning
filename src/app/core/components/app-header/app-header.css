@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  min-height: 100px;
+  max-height: 125px;
+  align-items: center;
+  border-bottom: solid 2px #e74c3c;
+  justify-content: center;
+}
+
+.header-logo {
+  margin-right: 20px;
+}

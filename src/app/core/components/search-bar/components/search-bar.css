@@ -1,0 +1,19 @@
+.search-bar {
+  display: block;
+}
+
+.search-bar-input {
+  border: solid 1px #e74c3c;
+  border-radius: 2rem;
+  height: 40px;
+  padding-left: 40px;
+}
+.search-bar-form {
+  position: relative;
+}
+
+.search-bar-icon {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+}
