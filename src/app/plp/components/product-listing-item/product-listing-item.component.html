@@ -1,22 +1,17 @@
-<div class="product-listing-item">
+<div class="product-listing-item" [routerLink]="['/details', productInfo.id]">
   <div class="product-listing-item__image-container">
-    <img class="product-listing-item__image" [src]="productInfo().image" />
+    <img class="product-listing-item__image" [src]="productInfo.image" />
   </div>
-  <div class="product-listing-item__title">{{ productInfo().title }}</div>
+  <div class="product-listing-item__title">{{ productInfo.title }}</div>
   <div class="product-listing-item__control-panel">
-    <control-panel [id]="productInfo().id" />
+    <control-panel [id]="productInfo.id" />
   </div>
   <div class="product-listing-item__price-section">
     <div class="product-listing-item__rating">
-      @if (productInfo().rating.count > 0) {
-        {{ productInfo().rating.rate }}
-        <fa-icon class="search-bar-icon" [icon]="faStar" />
-      } @else {
-        No reviews yet
-      }
+      <star-rating [rating]="productInfo.rating" />
     </div>
     <div class="product-listing-item__price">
-      {{ productInfo().price | currency: "USD" }}
+      {{ productInfo.price | currency: "USD" }}
     </div>
   </div>
 </div>

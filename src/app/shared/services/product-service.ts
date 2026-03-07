@@ -25,4 +25,12 @@ export class ProductService {
     );
     this.http.delete(url).subscribe();
   }
+
+  getProduct(productId: string): Observable<ProductInfo> {
+    let url = this.requestBuilderService.getTargetUrl(
+      backendConfig.backendUrls.getProduct,
+    );
+    url = url.replace("{id}", productId);
+    return this.http.get<ProductInfo>(url);
+  }
 }

@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  input,
-} from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { AddToCartButton } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
 import { DeleteButton } from "src/app/shared/components/delete-button/delete-button";
 import { EditButton } from "src/app/shared/components/edit-button/edit-button";

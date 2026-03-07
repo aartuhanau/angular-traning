@@ -1,0 +1,44 @@
+<div class="product-info-section">
+  <div class="product-info-section__image-container">
+    <img
+      class="product-info-section__image"
+      [src]="(product$ | async)?.image"
+    />
+  </div>
+  <div class="product-info-section__left-section">
+    <div class="product-info-section__title">
+      {{ (product$ | async)?.title }}
+    </div>
+
+    <div class="product-info-section__rating">
+      <star-rating
+        [isReviewVisible]="true"
+        [rating]="(product$ | async)?.rating ?? null"
+      />
+    </div>
+
+    <add-to-cart-button [disabled]="((product$ | async)?.stock ?? 0) < 1" />
+    <div class="product-info-section__stock">
+      @if (((product$ | async)?.stock ?? 0) < 1) {
+        Out of stock
+      }
+      @if (
+        ((product$ | async)?.stock ?? 0) > 1 &&
+        ((product$ | async)?.stock ?? 0) < 10
+      ) {
+        Almost sold out
+      }
+      @if (((product$ | async)?.stock ?? 0) > 10) {
+        In stock
+      }
+    </div>
+
+    <div class="product-info-section__price">
+      {{ (product$ | async)?.price | currency: "USD" }}
+    </div>
+
+    <div class="product-info-section__description">
+      {{ (product$ | async)?.description }}
+    </div>
+  </div>
+</div>

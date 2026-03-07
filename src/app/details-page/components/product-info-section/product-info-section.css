@@ -1,0 +1,26 @@
+.product-info-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+}
+
+.product-info-section__title {
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.product-info-section__rating {
+  margin-bottom: 20px;
+}
+
+.product-info-section__stock {
+  margin-bottom: 20px;
+}
+
+.product-info-section__price {
+  margin-bottom: 40px;
+}
+
+.product-info-section__description {
+  margin-bottom: 40px;
+}

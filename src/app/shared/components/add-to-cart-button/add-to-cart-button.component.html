@@ -14,7 +14,11 @@
       +
     </button>
   } @else {
-    <button class="add-to-cart-button" (click)="increaseCounter()">
+    <button
+      class="add-to-cart-button"
+      [disabled]="disabled"
+      (click)="increaseCounter()"
+    >
       Add to cart
     </button>
   }

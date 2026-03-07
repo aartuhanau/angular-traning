@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "add-to-cart-button",
@@ -8,6 +8,8 @@ import { Component } from "@angular/core";
 })
 export class AddToCartButton {
   public counter: number = 0;
+  @Input()
+  disabled: boolean = false;
 
   increaseCounter(): void {
     this.counter++;

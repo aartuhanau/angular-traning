@@ -1,0 +1,15 @@
+<div class="review-section">
+  <div class="review-section__title">Customer reviews:</div>
+  @if ((reviews$ | async)?.length == 0) {
+    No reviews yet
+  } @else {
+    @for (review of reviews$ | async; track $index) {
+      <div class="review">
+        <div class="review__rate">
+          <star-rating [rating]="{ count: 1, rate: review.rate }" />
+        </div>
+        <div class="review__text">{{ review.text }}</div>
+      </div>
+    }
+  }
+</div>

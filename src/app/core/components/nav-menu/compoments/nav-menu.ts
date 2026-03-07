@@ -1,8 +1,9 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "nav-menu",
-  imports: [],
+  imports: [RouterLink],
   templateUrl: "nav-menu.component.html",
   styleUrl: "nav-menu.css",
 })
