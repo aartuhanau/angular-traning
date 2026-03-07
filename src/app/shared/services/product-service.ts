@@ -18,4 +18,11 @@ export class ProductService {
     );
     return this.http.get<ProductInfo[]>(url);
   }
+
+  deleteProduct(id: number): void {
+    const url = this.requestBuilderService.getTargetUrl(
+      backendConfig.backendUrls.deleteProduct.replace("{id}", id.toString()),
+    );
+    this.http.delete(url).subscribe();
+  }
 }

@@ -21,6 +21,10 @@
   justify-content: center;
 }
 
+.product-listing-item__title {
+  height: 60px;
+}
+
 .product-listing-item__image {
   height: 208px;
   width: 208px;

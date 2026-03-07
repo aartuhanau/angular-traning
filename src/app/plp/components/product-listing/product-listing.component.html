@@ -1,5 +1,5 @@
 <div class="product-listing">
-  @for (productInfo of productInfoList$ | async; track $index) {
+  @for (productInfo of productInfoList$ | async | search; track $index) {
     <product-listing-item [productInfo]="productInfo" />
   }
 </div>

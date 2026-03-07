@@ -4,10 +4,11 @@ import { ProductInfo } from "src/app/shared/models/productinfo";
 import { ProductService } from "src/app/shared/services/product-service";
 import { Observable } from "rxjs";
 import { AsyncPipe } from "@angular/common";
+import { SearchPipe } from "src/app/shared/pipes/search-pipe";
 
 @Component({
   selector: "product-listing",
-  imports: [ProductListingItem, AsyncPipe],
+  imports: [ProductListingItem, AsyncPipe, SearchPipe],
   templateUrl: "product-listing.component.html",
   styleUrl: "product-listing.css",
 })

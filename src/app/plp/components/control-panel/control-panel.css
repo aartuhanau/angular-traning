@@ -1,0 +1,11 @@
+.control-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.control-panel__edit-section {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}

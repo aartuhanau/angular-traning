@@ -1,0 +1,4 @@
+.add-to-cart-button__container {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,12 +1,20 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { inject, Pipe, PipeTransform } from "@angular/core";
+import { SearchState } from "../models/search-state";
+import { ProductInfo } from "../models/productinfo";
 
 @Pipe({
-  name: 'search',
+  name: "search",
+  pure: false,
 })
-export class SearchPipePipe implements PipeTransform {
+export class SearchPipe implements PipeTransform {
+  searchState = inject(SearchState);
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: ProductInfo[] | null): ProductInfo[] | null {
+    if (value === null) {
+      return null;
+    }
+    return value.filter((product) =>
+      product.title.includes(this.searchState.search()),
+    );
   }
-
 }

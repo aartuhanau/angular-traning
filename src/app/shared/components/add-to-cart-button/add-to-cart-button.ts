@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-add-to-cart-button',
+  selector: "add-to-cart-button",
   imports: [],
-  template: `
-    <p>
-      add-to-cart-button works!
-    </p>
-  `,
-  styles: ``,
+  templateUrl: "add-to-cart-button.component.html",
+  styleUrl: "add-to-cart-button.css",
 })
 export class AddToCartButton {
+  public counter: number = 0;
 
+  increaseCounter(): void {
+    this.counter++;
+  }
+
+  decreaseCounter(): void {
+    this.counter--;
+  }
 }
