@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { PlpPage } from "./plp/components/plp-page/plp-page";
 import { DetailsPage } from "./details-page/components/details-page/details-page";
+import { EditPage } from "./edit-page/components/edit-page/edit-page";
 
 export const routes: Routes = [
   {
@@ -8,7 +9,11 @@ export const routes: Routes = [
     component: PlpPage,
   },
   {
-    path: "details/:id",
+    path: "product/:id",
     component: DetailsPage,
+  },
+  {
+    path: "product/edit/:id",
+    component: EditPage,
   },
 ];

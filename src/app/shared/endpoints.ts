@@ -1,7 +1,8 @@
 export const backendConfig = {
   backendUrls: {
     getProducts: "/products",
-    deleteProduct: "/product/{id}",
+    deleteProduct: "/products/{id}",
+    patchProduct: "/products/{id}",
     getReviews: "/reviews/",
     getProduct: "/products/{id}",
   },

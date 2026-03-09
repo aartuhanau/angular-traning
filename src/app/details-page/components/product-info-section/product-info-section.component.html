@@ -1,44 +1,40 @@
+@let product = product$ | async;
+
 <div class="product-info-section">
   <div class="product-info-section__image-container">
-    <img
-      class="product-info-section__image"
-      [src]="(product$ | async)?.image"
-    />
+    <img class="product-info-section__image" [src]="product?.image" />
   </div>
   <div class="product-info-section__left-section">
     <div class="product-info-section__title">
-      {{ (product$ | async)?.title }}
+      {{ product?.title }}
     </div>
 
     <div class="product-info-section__rating">
       <star-rating
         [isReviewVisible]="true"
-        [rating]="(product$ | async)?.rating ?? null"
+        [rating]="product?.rating ?? null"
       />
     </div>
 
-    <add-to-cart-button [disabled]="((product$ | async)?.stock ?? 0) < 1" />
+    <add-to-cart-button [disabled]="(product?.stock ?? 0) < 1" />
     <div class="product-info-section__stock">
-      @if (((product$ | async)?.stock ?? 0) < 1) {
+      @if ((product?.stock ?? 0) < 1) {
         Out of stock
       }
-      @if (
-        ((product$ | async)?.stock ?? 0) > 1 &&
-        ((product$ | async)?.stock ?? 0) < 10
-      ) {
+      @if ((product?.stock ?? 0) > 1 && (product?.stock ?? 0) < 10) {
         Almost sold out
       }
-      @if (((product$ | async)?.stock ?? 0) > 10) {
+      @if ((product?.stock ?? 0) > 10) {
         In stock
       }
     </div>
 
     <div class="product-info-section__price">
-      {{ (product$ | async)?.price | currency: "USD" }}
+      {{ product?.price | currency: "USD" }}
     </div>
 
     <div class="product-info-section__description">
-      {{ (product$ | async)?.description }}
+      {{ product?.description }}
     </div>
   </div>
 </div>

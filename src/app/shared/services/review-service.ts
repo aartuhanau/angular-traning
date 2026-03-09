@@ -9,9 +9,8 @@ import { backendConfig } from "../endpoints";
   providedIn: "root",
 })
 export class ReviewService {
-  constructor() {}
-  http: HttpClient = inject(HttpClient);
-  requestBuilder: RequestBuilderService = inject(RequestBuilderService);
+  private http: HttpClient = inject(HttpClient);
+  private requestBuilder: RequestBuilderService = inject(RequestBuilderService);
 
   getReviews(productId: string): Observable<ReviewInfo[]> {
     let url = this.requestBuilder.getTargetUrl(

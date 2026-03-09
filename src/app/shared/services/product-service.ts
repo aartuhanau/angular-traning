@@ -9,8 +9,10 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ProductService {
-  requestBuilderService: RequestBuilderService = inject(RequestBuilderService);
-  http: HttpClient = inject(HttpClient);
+  private requestBuilderService: RequestBuilderService = inject(
+    RequestBuilderService,
+  );
+  private http: HttpClient = inject(HttpClient);
 
   getProducts(): Observable<ProductInfo[]> {
     const url = this.requestBuilderService.getTargetUrl(
@@ -32,5 +34,12 @@ export class ProductService {
     );
     url = url.replace("{id}", productId);
     return this.http.get<ProductInfo>(url);
+  }
+
+  saveProduct(productId: string, productInfo: ProductInfo) {
+    const url = this.requestBuilderService.getTargetUrl(
+      backendConfig.backendUrls.deleteProduct.replace("{id}", productId),
+    );
+    this.http.patch(url, productInfo).subscribe();
   }
 }

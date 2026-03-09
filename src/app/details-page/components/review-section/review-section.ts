@@ -13,14 +13,9 @@ import { StarRating } from "src/app/shared/components/star-rating/star-rating";
 })
 export class ReviewSection {
   @Input({ required: true })
-  productId: string = "";
-
+  productId!: string;
   reviews$!: Observable<ReviewInfo[]>;
   reviewService = inject(ReviewService);
-
-  constructor(reviewService: ReviewService) {
-    this.reviewService = reviewService;
-  }
 
   ngOnInit(): void {
     this.reviews$ = this.reviewService.getReviews(this.productId);

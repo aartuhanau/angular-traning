@@ -13,12 +13,8 @@ import { SearchPipe } from "src/app/shared/pipes/search-pipe";
   styleUrl: "product-listing.css",
 })
 export class ProductListing implements OnInit {
+  private productService: ProductService = inject(ProductService);
   productInfoList$!: Observable<ProductInfo[]>;
-  productService: ProductService = inject(ProductService);
-
-  constructor(productService: ProductService) {
-    this.productService = productService;
-  }
 
   ngOnInit(): void {
     this.productInfoList$ = this.productService.getProducts();

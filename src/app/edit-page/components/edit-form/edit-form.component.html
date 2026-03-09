@@ -1,0 +1,32 @@
+<form (submit)="saveProduct()" [formGroup]="productForm">
+  <label for="title">Title:</label>
+  <input id="title" class="form-control" type="text" formControlName="title" />
+  @if (title?.invalid) {
+    <div class="alert alert-danger">Error</div>
+  }
+  <label for="description">Description</label>
+  <input id="description" type="textarea" formControlName="description" />
+  @if (description?.invalid) {
+    <div class="alert alert-danger">Error</div>
+  }
+  <label for="price">Price</label>
+  <input id="price" type="number" formControlName="price" />
+  @if (price?.invalid) {
+    <div class="alert alert-danger">Error</div>
+  }
+  <label for="image">Image url</label>
+  <input id="image" type="text" formControlName="image" />
+  @if (image?.invalid) {
+    <div class="alert alert-danger">Error</div>
+  }
+  @if (!image?.invalid) {
+    <img [src]="image?.value" />
+  }
+  <label for="stock">Stock</label>
+  <input id="stock" type="number" formControlName="stock" />
+  @if (stock?.invalid) {
+    <div class="alert alert-danger">Error</div>
+  }
+
+  <button type="submit" [disabled]="!productForm.valid">Submit</button>
+</form>
