@@ -1,3 +1,4 @@
+<search-badge-component></search-badge-component>
 <div class="product-listing">
   @for (productInfo of productInfoList$ | async | search; track $index) {
     <product-listing-item [productInfo]="productInfo" />

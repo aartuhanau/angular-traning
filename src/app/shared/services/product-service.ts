@@ -2,8 +2,8 @@ import { inject, Injectable } from "@angular/core";
 import { ProductInfo } from "../models/productinfo";
 import { RequestBuilderService } from "./request-builder-service";
 import { backendConfig } from "../endpoints";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { map, Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -14,11 +14,20 @@ export class ProductService {
   );
   private http: HttpClient = inject(HttpClient);
 
-  getProducts(): Observable<ProductInfo[]> {
+  getProducts(params: HttpParams): Observable<ProductInfo[]> {
     const url = this.requestBuilderService.getTargetUrl(
       backendConfig.backendUrls.getProducts,
     );
-    return this.http.get<ProductInfo[]>(url);
+    return this.http.get<ProductInfo[]>(url, { params: params });
+  }
+
+  getProductCount(params: HttpParams): Observable<number> {
+    return this.getProducts(params).pipe(
+      map((result) => {
+        console.log(result.length);
+        return result.length;
+      }),
+    );
   }
 
   deleteProduct(id: number): void {

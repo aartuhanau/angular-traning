@@ -1,0 +1,8 @@
+<form [formGroup]="searchForm" (ngSubmit)="facetSearch()">
+  <input type="number" formControlName="ratingFrom" />
+  <input type="number" formControlName="ratingTo" />
+  <input type="checkbox" formControlName="inStock" />
+  <input type="checkbox" formControlName="hasReviews" />
+  <input type="submit" />
+</form>
+<div>{{filterCount$ | async}}</div>
