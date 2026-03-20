@@ -1,4 +1,4 @@
-import { RatingInfo } from "./ratinginfo";
+import { RatingInfo } from "./rating-info";
 
 export interface ProductInfo {
   id: number;

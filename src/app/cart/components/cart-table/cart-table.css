@@ -1,0 +1,5 @@
+.cart-table__table-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

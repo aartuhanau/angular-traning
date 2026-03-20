@@ -18,7 +18,7 @@ export const routes: Routes = [
     component: EditPage,
   },
   {
-    path: "cart/:id",
+    path: "cart",
     component: CartPage,
   },
 ];

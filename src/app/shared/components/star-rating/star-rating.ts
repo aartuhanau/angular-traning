@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { RatingInfo } from "../../models/ratinginfo";
+import { RatingInfo } from "../../models/rating-info";
 
 @Component({
   selector: "star-rating",

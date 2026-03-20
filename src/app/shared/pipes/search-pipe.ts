@@ -1,6 +1,6 @@
 import { inject, Pipe, PipeTransform } from "@angular/core";
 import { SearchState } from "../models/search-state";
-import { ProductInfo } from "../models/productinfo";
+import { ProductInfo } from "../models/product-info";
 
 @Pipe({
   name: "search",

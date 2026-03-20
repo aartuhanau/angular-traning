@@ -129,8 +129,50 @@
         {
           "id": 2,
           "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
-          "count": 8,
+          "count": 9,
           "price": 287
+        },
+        {
+          "id": "1",
+          "title": "",
+          "price": null,
+          "count": 1
+        },
+        {
+          "id": "6",
+          "title": "",
+          "price": null,
+          "count": 2
+        },
+        {
+          "id": "4",
+          "title": "",
+          "price": null,
+          "count": 1
+        },
+        {
+          "id": "5",
+          "title": "",
+          "price": null,
+          "count": 1
+        },
+        {
+          "id": "7",
+          "title": "",
+          "price": null,
+          "count": 1
+        },
+        {
+          "id": "8",
+          "title": "",
+          "price": null,
+          "count": 1
+        },
+        {
+          "id": "9",
+          "title": "",
+          "price": null,
+          "count": 1
         }
       ]
     }

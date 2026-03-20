@@ -16,7 +16,10 @@
       />
     </div>
 
-    <add-to-cart-button [disabled]="(product?.stock ?? 0) < 1" />
+    <add-to-cart-button
+      [productId]="product?.id ?? 0"
+      [disabled]="(product?.stock ?? 0) < 1"
+    />
     <div class="product-info-section__stock">
       @if ((product?.stock ?? 0) < 1) {
         Out of stock

@@ -1,16 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  Input,
-  input,
-} from "@angular/core";
+import { Component, inject, Input } from "@angular/core";
 import { ProductService } from "../../services/product-service";
-import { RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: "delete-button",
-  imports: [RouterLinkActive],
+  imports: [],
   templateUrl: "delete-button.component.html",
   styleUrl: "./delete-button.css",
 })

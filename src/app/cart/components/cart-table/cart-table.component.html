@@ -1,0 +1,20 @@
+@let cart = cartInfo$ | async;
+<div class="cart-table__table-header">
+  <div class="cart-table__table-header-column"></div>
+  <div class="cart-table__table-header-column"></div>
+
+  <div class="cart-table__table-header-column"></div>
+  <div class="cart-table__table-header-column"></div>
+  <div class="cart-table__table-header-column"></div>
+</div>
+@for (entry of cart?.products; track $index) {
+  <div class="cart-table__table-row">
+    <div class="cart-table__table-value">
+      {{ entry.id }}
+    </div>
+    <div class="cart-table__table-value">{{ entry.title }}</div>
+    <div class="cart-table__table-value">{{ entry.price }}</div>
+
+    <div class="cart-table__table-value">{{ entry.count }}</div>
+  </div>
+}

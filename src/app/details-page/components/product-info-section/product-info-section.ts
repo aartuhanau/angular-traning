@@ -2,7 +2,7 @@ import { AsyncPipe, CurrencyPipe } from "@angular/common";
 import { Component, inject, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { AddToCartButton } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
-import { ProductInfo } from "src/app/shared/models/productinfo";
+import { ProductInfo } from "src/app/shared/models/product-info";
 import { ProductService } from "src/app/shared/services/product-service";
 import { StarRating } from "src/app/shared/components/star-rating/star-rating";
 

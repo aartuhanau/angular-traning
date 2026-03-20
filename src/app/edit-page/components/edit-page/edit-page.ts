@@ -3,7 +3,7 @@ import { EditForm } from "../edit-form/edit-form";
 import { ProductService } from "src/app/shared/services/product-service";
 import { ActivatedRoute } from "@angular/router";
 import { AsyncPipe } from "@angular/common";
-import { ProductInfo } from "src/app/shared/models/productinfo";
+import { ProductInfo } from "src/app/shared/models/product-info";
 import { Observable } from "rxjs";
 
 @Component({

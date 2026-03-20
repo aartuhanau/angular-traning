@@ -11,7 +11,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { ProductInfo } from "src/app/shared/models/productinfo";
+import { ProductInfo } from "src/app/shared/models/product-info";
 import { ProductService } from "src/app/shared/services/product-service";
 
 @Component({

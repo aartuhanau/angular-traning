@@ -1,7 +1,7 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, inject, Input } from "@angular/core";
 import { Observable } from "rxjs";
-import { ReviewInfo } from "src/app/shared/models/ReviewInfo";
+import { ReviewInfo } from "src/app/shared/models/review-info";
 import { ReviewService } from "src/app/shared/services/review-service";
 import { StarRating } from "src/app/shared/components/star-rating/star-rating";
 

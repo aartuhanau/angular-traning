@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, inject, Input } from "@angular/core";
+import { CartService } from "../../services/cart-service";
 
 @Component({
   selector: "add-to-cart-button",
@@ -7,15 +8,24 @@ import { Component, Input } from "@angular/core";
   styleUrl: "add-to-cart-button.css",
 })
 export class AddToCartButton {
-  public counter: number = 0;
+  private _counter: number = 0;
+  private cartService: CartService = inject(CartService);
+  @Input()
+  productId!: number;
   @Input()
   disabled: boolean = false;
 
   increaseCounter(): void {
-    this.counter++;
+    this.cartService.addProduct(this.productId, 1);
+    this._counter++;
   }
 
   decreaseCounter(): void {
-    this.counter--;
+    this.cartService.addProduct(this.productId, -1);
+    this._counter--;
+  }
+
+  counter(): number {
+    return this._counter;
   }
 }

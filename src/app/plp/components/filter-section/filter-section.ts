@@ -7,6 +7,4 @@ import { FilterForm } from "../filter/filter-form";
   templateUrl: "filter-section.component.html",
   styleUrl: "filter-section.css",
 })
-export class FilterSection {
-  
-}
+export class FilterSection {}

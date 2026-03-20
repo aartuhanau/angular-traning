@@ -5,6 +5,6 @@ export const backendConfig = {
     patchProduct: "/products/{id}",
     getReviews: "/reviews/",
     getProduct: "/products/{id}",
-    getCart: "/carts/{id}",
+    getCart: "/cart/{id}",
   },
 };

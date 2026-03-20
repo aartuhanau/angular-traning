@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { ProductInfo } from "../models/productinfo";
+import { ProductInfo } from "../models/product-info";
 import { RequestBuilderService } from "./request-builder-service";
 import { backendConfig } from "../endpoints";
 import { HttpClient, HttpParams } from "@angular/common/http";
@@ -22,12 +22,7 @@ export class ProductService {
   }
 
   getProductCount(params: HttpParams): Observable<number> {
-    return this.getProducts(params).pipe(
-      map((result) => {
-        console.log(result.length);
-        return result.length;
-      }),
-    );
+    return this.getProducts(params).pipe(map((result) => result.length));
   }
 
   deleteProduct(id: number): void {
