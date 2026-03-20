@@ -15,23 +15,34 @@
         [rating]="product?.rating ?? null"
       />
     </div>
+    <div class="add-to-cart-button__section">
+      <add-to-cart-button
+        [productId]="product?.id ?? 0"
+        [disabled]="(product?.stock ?? 0) < 1"
+      />
 
-    <add-to-cart-button
-      [productId]="product?.id ?? 0"
-      [disabled]="(product?.stock ?? 0) < 1"
-    />
-    <div class="product-info-section__stock">
       @if ((product?.stock ?? 0) < 1) {
-        Out of stock
+        <div
+          class="product-info-section__stock product-info-section__stock--outofstock"
+        >
+          Out of stock
+        </div>
       }
       @if ((product?.stock ?? 0) > 1 && (product?.stock ?? 0) < 10) {
-        Almost sold out
+        <div
+          class="product-info-section__stock product-info-section__stock--lowstock"
+        >
+          Almost sold out
+        </div>
       }
       @if ((product?.stock ?? 0) > 10) {
-        In stock
+        <div
+          class="product-info-section__stock product-info-section__stock--instock"
+        >
+          In stock
+        </div>
       }
     </div>
-
     <div class="product-info-section__price">
       {{ product?.price | currency: "USD" }}
     </div>

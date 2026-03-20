@@ -1,4 +1,4 @@
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, NgOptimizedImage } from "@angular/common";
 import { Component, inject, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { ReviewInfo } from "src/app/shared/models/review-info";
@@ -7,7 +7,7 @@ import { StarRating } from "src/app/shared/components/star-rating/star-rating";
 
 @Component({
   selector: "review-section",
-  imports: [AsyncPipe, StarRating],
+  imports: [AsyncPipe, StarRating, NgOptimizedImage],
   templateUrl: "review-section.component.html",
   styleUrl: "./review-section.css",
 })

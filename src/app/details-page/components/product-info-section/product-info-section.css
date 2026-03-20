@@ -4,21 +4,50 @@
   gap: 15px;
 }
 
+.product-info-section__left-section {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.product-info-section__image {
+  width: 500px;
+  height: 500px;
+}
+
 .product-info-section__title {
-  height: 60px;
+  height: 40px;
   margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .product-info-section__rating {
   margin-bottom: 20px;
 }
 
+.add-to-cart-button__section {
+  display: flex;
+  gap: 20px;
+}
+
 .product-info-section__stock {
   margin-bottom: 20px;
+}
+.product-info-section__stock--outofstock {
+  color: gray;
+}
+
+.product-info-section__stock--lowstock {
+  color: red;
+}
+
+.product-info-section__stock--instock {
+  color: green;
 }
 
 .product-info-section__price {
   margin-bottom: 40px;
+  font-weight: 600;
 }
 
 .product-info-section__description {
