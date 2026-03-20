@@ -1,8 +1,54 @@
-<form [formGroup]="searchForm" (ngSubmit)="facetSearch()">
-  <input type="number" formControlName="ratingFrom" />
-  <input type="number" formControlName="ratingTo" />
-  <input type="checkbox" formControlName="inStock" />
-  <input type="checkbox" formControlName="hasReviews" />
-  <input type="submit" />
+<form
+  class="filter-section__filter-form"
+  [formGroup]="searchForm"
+  (ngSubmit)="facetSearch()"
+>
+  <label for="ratingFrom">Rating from</label>
+  <input
+    type="number"
+    formControlName="ratingFrom"
+    name="ratingFrom"
+    id="ratingFrom"
+    min="0"
+    max="5"
+    placeholder="0.1"
+  />
+
+  <label for="ratingTo">Rating to</label>
+  <input
+    type="number"
+    formControlName="ratingTo"
+    name="ratingTo"
+    id="ratingTo"
+    min="0"
+    max="5"
+    placeholder="3.5"
+  />
+
+  <div class="filter-form__checkbox">
+    <label for="inStock">Stock available</label>
+    <input
+      type="checkbox"
+      formControlName="inStock"
+      name="inStock"
+      id="inStock"
+    />
+  </div>
+
+  <div class="filter-form__checkbox">
+    <label for="hasReviews">Reviews available</label>
+    <input
+      type="checkbox"
+      formControlName="hasReviews"
+      name="hasReviews"
+      id="hasReviews"
+    />
+  </div>
+  @if (searchForm.dirty == true) {
+    @if ((filterCount$ | async) ?? 0 > 0) {
+      <input type="submit" value="Show {{ filterCount$ | async }} variants" />
+    } @else {
+      <input type="submit" value="No variants available" disabled />
+    }
+  }
 </form>
-<div>{{filterCount$ | async}}</div>

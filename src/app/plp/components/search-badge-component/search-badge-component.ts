@@ -10,7 +10,7 @@ import { AsyncPipe } from "@angular/common";
   selector: "search-badge-component",
   imports: [SearchBadge, AsyncPipe],
   templateUrl: "search-badge-component.component.html",
-  styles: ``,
+  styleUrl: "search-badge-component.css",
 })
 export class SearchBadgeComponent {
   facetList$: Observable<FacetInfo[]>;
