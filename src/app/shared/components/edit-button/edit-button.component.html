@@ -1,1 +1,5 @@
-<button [routerLink]="['/edit', id()]" class="edit-button">Edit</button>
+<a [routerLink]="['product', 'edit', id()]"
+  ><button (click)="$event.stopPropagation()" class="edit-button">
+    Edit
+  </button></a
+>

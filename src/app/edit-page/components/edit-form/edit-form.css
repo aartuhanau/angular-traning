@@ -1,3 +1,62 @@
-:host {
-  display: block;
+.edit-form__container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.edit-form__right-section {
+  width: 500px;
+}
+
+.edit-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+textarea,
+input[type="submit"],
+input[type="number"],
+input[type="text"],
+input[type="submit"]:hover:disabled {
+  height: 40px;
+  background-color: white;
+  border: solid 2px black;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Be Vietnam Pro", sans-serif;
+  padding-left: 5px;
+}
+
+input.ng-invalid {
+  border-color: red;
+}
+
+.alert-danger {
+  background-color: red;
+}
+
+textarea {
+  height: 200px;
+}
+
+input[type="submit"]:hover {
+  height: 40px;
+  border-radius: 5px;
+  border: solid 2px #e74c3c;
+}
+
+input[type="submit"]:disabled,
+input[type="submit"]:disabled:hover {
+  background-color: gainsboro;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

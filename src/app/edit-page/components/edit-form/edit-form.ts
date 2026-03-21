@@ -63,7 +63,6 @@ export class EditForm implements OnInit {
 
   saveProduct() {
     const updatedProduct = this.productForm.value;
-    console.log(updatedProduct);
 
     this.productService.saveProduct(
       this.productInfo.id.toString(),
