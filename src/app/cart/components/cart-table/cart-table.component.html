@@ -1,20 +1,29 @@
 @let cart = cartInfo$ | async;
-<div class="cart-table__table-header">
-  <div class="cart-table__table-header-column"></div>
-  <div class="cart-table__table-header-column"></div>
-
-  <div class="cart-table__table-header-column"></div>
-  <div class="cart-table__table-header-column"></div>
-  <div class="cart-table__table-header-column"></div>
-</div>
-@for (entry of cart?.products; track $index) {
-  <div class="cart-table__table-row">
-    <div class="cart-table__table-value">
-      {{ entry.id }}
-    </div>
-    <div class="cart-table__table-value">{{ entry.title }}</div>
-    <div class="cart-table__table-value">{{ entry.price }}</div>
-
-    <div class="cart-table__table-value">{{ entry.count }}</div>
-  </div>
-}
+<table>
+  <tr>
+    <th>Entry number</th>
+    <th>Title</th>
+    <th>Price per entry</th>
+    <th>Total price</th>
+    <th>Count</th>
+  </tr>
+  @for (entry of cart?.products | slice: start : end; track $index) {
+    <tr>
+      <td class="cart-table__table-value">
+        {{ entry.id }}
+      </td>
+      <td class="cart-table__table-value">{{ entry.title }}</td>
+      <td class="cart-table__table-value">{{ entry.price }}</td>
+      <td class="cart-table__table-value">{{ entry.count * entry.price }}</td>
+      <td class="cart-table__table-value">
+        <add-to-cart-button [productId]="entry.id" [updateCounter]="true" />
+      </td>
+      <td class="cart-table__table-value" (click)="removeProduct(entry.id)">
+        <fa-icon [icon]="faXmark" size="xl" />
+      </td>
+    </tr>
+  } @empty {
+    <div class="cart-table__empty">Cart is empty</div>
+  }
+</table>
+<cart-pagination (paginationInfo)="updatePagination($event)"></cart-pagination>

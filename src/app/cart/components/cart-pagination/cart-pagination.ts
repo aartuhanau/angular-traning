@@ -8,13 +8,14 @@ import {
   Output,
 } from "@angular/core";
 import { map, Observable } from "rxjs";
+import { PaginationInfo } from "src/app/shared/models/pagination-info";
 import { CartService } from "src/app/shared/services/cart-service";
 
 @Component({
   selector: "cart-pagination",
   imports: [AsyncPipe],
   templateUrl: "cart-pagination.component.html",
-  styles: ``,
+  styleUrl: "cart-pagination.css",
 })
 export class CartPagination implements OnInit {
   private cartService: CartService = inject(CartService);
@@ -23,11 +24,11 @@ export class CartPagination implements OnInit {
   @Input()
   pageSize: number = 3;
   @Input()
-  totalCount!: number;
+  entriesCount!: number;
   pages!: Observable<number[]>;
 
   @Output()
-  startItem = new EventEmitter<number>();
+  paginationInfo = new EventEmitter<PaginationInfo>();
 
   ngOnInit(): void {
     this.pages = this.cartService
@@ -40,5 +41,18 @@ export class CartPagination implements OnInit {
           ),
         ),
       );
+  }
+
+  updatePagination(page: number): void {
+    this.currentPage = page;
+    const paginationStart = page * this.pageSize;
+    const paginationEnd =
+      (page + 1) * this.pageSize > this.entriesCount
+        ? this.entriesCount
+        : (page + 1) * this.pageSize;
+    this.paginationInfo.emit({
+      startNumber: paginationStart,
+      endNumber: paginationEnd,
+    });
   }
 }

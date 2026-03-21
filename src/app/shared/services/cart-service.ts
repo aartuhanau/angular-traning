@@ -52,11 +52,18 @@ export class CartService {
     return sessionCart ?? "1";
   }
 
+  removeProductFromCart(productId: number) {
+    const cartInfo = this.cartInfoSubject.value;
+    cartInfo.products = cartInfo.products.filter(
+      (entry) => entry.id !== productId,
+    );
+    this.updateCart(cartInfo);
+  }
+
   addProduct(productId: number, count: number) {
     const cartInfo = this.cartInfoSubject.value;
-    let entry: CartEntryInfo | undefined = cartInfo.products.find(
-      (entry) => entry.id == productId,
-    );
+    let entry: CartEntryInfo | undefined =
+      this.getCartEntryForProduct(productId);
     if (entry === undefined) {
       entry = { id: productId, title: "", price: NaN, count: count };
       cartInfo.products.push(entry);
@@ -66,10 +73,23 @@ export class CartService {
       }
     }
     cartInfo.products = cartInfo.products.filter((ent) => ent.count > 0);
+    this.updateCart(cartInfo);
+  }
+
+  private updateCart(cartInfo: CartInfo) {
     let url = this.requestBuilderService.getTargetUrl(
       backendConfig.backendUrls.getCart,
     );
     url = url.replace("{id}", cartInfo.id);
     this.http.put(url, cartInfo).subscribe();
+  }
+
+  getProductCount(productId: number): number {
+    return this.getCartEntryForProduct(productId)?.count ?? 0;
+  }
+
+  getCartEntryForProduct(productId: number): CartEntryInfo | undefined {
+    const cartInfo = this.cartInfoSubject.value;
+    return cartInfo.products.find((entry) => entry.id == productId);
   }
 }

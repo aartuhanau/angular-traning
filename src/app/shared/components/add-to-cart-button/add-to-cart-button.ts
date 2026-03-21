@@ -1,4 +1,4 @@
-import { Component, inject, Input } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import { CartService } from "../../services/cart-service";
 
 @Component({
@@ -7,13 +7,26 @@ import { CartService } from "../../services/cart-service";
   templateUrl: "add-to-cart-button.component.html",
   styleUrl: "add-to-cart-button.css",
 })
-export class AddToCartButton {
+export class AddToCartButton implements OnInit {
   private _counter: number = 0;
   private cartService: CartService = inject(CartService);
+  @Input()
+  updateCounter: boolean = false;
   @Input()
   productId!: number;
   @Input()
   disabled: boolean = false;
+
+  ngOnInit(): void {
+    if (this.updateCounter) {
+      this._counter = this.cartService.getProductCount(this.productId);
+    }
+  }
+
+  addToCart(): void {
+    this._counter = this.cartService.getProductCount(this.productId);
+    this.increaseCounter();
+  }
 
   increaseCounter(): void {
     this.cartService.addProduct(this.productId, 1);
