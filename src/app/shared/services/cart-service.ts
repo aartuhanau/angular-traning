@@ -16,8 +16,6 @@ export class CartService {
   private http: HttpClient = inject(HttpClient);
   private cartInfoSubject: BehaviorSubject<CartInfo> =
     new BehaviorSubject<CartInfo>({ id: "", products: [], userId: "" });
-  private loadingCartInfoSubject: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
   cartInfo$: Observable<CartInfo> = this.cartInfoSubject.asObservable();
 
   getCurrentCart(): Observable<CartInfo> {
@@ -25,15 +23,9 @@ export class CartService {
   }
 
   loadCart() {
-    this.loadingCartInfoSubject.next(true);
-    this.getCart(this.getCurrentCartId() ?? "")
-      .pipe(
-        map((cart) => {
-          this.cartInfoSubject.next(cart);
-          this.loadingCartInfoSubject.next(false);
-        }),
-      )
-      .subscribe();
+    this.getCart(this.getCurrentCartId() ?? "").subscribe((cart) =>
+      this.cartInfoSubject.next(cart),
+    );
   }
 
   private getCart(id: string) {
@@ -78,7 +70,7 @@ export class CartService {
 
   private updateCart(cartInfo: CartInfo) {
     let url = this.requestBuilderService.getTargetUrl(
-      backendConfig.backendUrls.getCart,
+      backendConfig.backendUrls.updateCart,
     );
     url = url.replace("{id}", cartInfo.id);
     this.http.put(url, cartInfo).subscribe();

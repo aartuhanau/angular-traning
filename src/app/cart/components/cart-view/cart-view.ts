@@ -1,13 +1,10 @@
-import { Component } from '@angular/core';
-import { CartTable } from "../cart-table/cart-table";
-import { CartPagination } from "../cart-pagination/cart-pagination";
+import { Component } from "@angular/core";
+import { CartTableComponent } from "../cart-table/cart-table";
 
 @Component({
-  selector: 'cart-view',
-  imports: [CartTable, CartPagination],
-  templateUrl: 'cart-view.component.html',
+  selector: "aa-cart-view",
+  imports: [CartTableComponent],
+  templateUrl: "cart-view.component.html",
   styles: ``,
 })
-export class CartPage {
-
-}
+export class CartPageComponent {}

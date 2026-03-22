@@ -1,12 +1,13 @@
-import { Component, input } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: "edit-button",
+  selector: "aa-edit-button",
   imports: [RouterLink],
   templateUrl: "edit-button.component.html",
   styleUrl: "./edit-button.css",
 })
-export class EditButton {
-  id = input.required<number>();
+export class EditButtonComponent {
+  @Input({ required: true })
+  productId!: number;
 }

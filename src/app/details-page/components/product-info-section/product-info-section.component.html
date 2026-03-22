@@ -10,38 +10,27 @@
     </div>
 
     <div class="product-info-section__rating">
-      <star-rating
+      <aa-star-rating
         [isReviewVisible]="true"
         [rating]="product?.rating ?? null"
       />
     </div>
     <div class="add-to-cart-button__section">
-      <add-to-cart-button
+      <aa-add-to-cart-button
         [productId]="product?.id ?? 0"
         [disabled]="(product?.stock ?? 0) < 1"
       />
-
-      @if ((product?.stock ?? 0) < 1) {
-        <div
-          class="product-info-section__stock product-info-section__stock--outofstock"
-        >
+      <div [aaStockColor]="product?.stock" class="product-info-section__stock">
+        @if ((product?.stock ?? 0) < 1) {
           Out of stock
-        </div>
-      }
-      @if ((product?.stock ?? 0) > 1 && (product?.stock ?? 0) < 10) {
-        <div
-          class="product-info-section__stock product-info-section__stock--lowstock"
-        >
+        }
+        @if ((product?.stock ?? 0) > 1 && (product?.stock ?? 0) < 10) {
           Almost sold out
-        </div>
-      }
-      @if ((product?.stock ?? 0) > 10) {
-        <div
-          class="product-info-section__stock product-info-section__stock--instock"
-        >
+        }
+        @if ((product?.stock ?? 0) >= 10) {
           In stock
-        </div>
-      }
+        }
+      </div>
     </div>
     <div class="product-info-section__price">
       {{ product?.price | currency: "USD" }}

@@ -1,14 +1,17 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, Input } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-clean-all-button",
+  selector: "aa-clean-all-button",
   imports: [],
-  template: ` <p>clean-all-button works!</p> `,
-  styles: ``,
+  templateUrl: "clean-all-button.component.html",
+  styleUrl: "clean-all-button.css",
 })
-export class CleanAllButton {
+export class CleanAllButtonComponent {
   router: Router = inject(Router);
+  @Input()
+  showButton: boolean = false;
+
   removeAllFilters() {
     this.router.navigate([], { queryParams: {} });
   }

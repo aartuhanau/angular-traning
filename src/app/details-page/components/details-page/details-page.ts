@@ -1,15 +1,15 @@
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { ReviewSection } from "../review-section/review-section";
-import { ProductInfoSection } from "../product-info-section/product-info-section";
+import { ReviewSectionComponent } from "../review-section/review-section";
+import { ProductInfoSectionComponent } from "../product-info-section/product-info-section";
 
 @Component({
-  selector: "details-page",
-  imports: [ReviewSection, ProductInfoSection],
+  selector: "aa-details-page",
+  imports: [ReviewSectionComponent, ProductInfoSectionComponent],
   templateUrl: "details-page.component.html",
   styleUrl: "./details-page.css",
 })
-export class DetailsPage {
+export class DetailsPageComponent {
   productId: string;
   private route = inject(ActivatedRoute);
 

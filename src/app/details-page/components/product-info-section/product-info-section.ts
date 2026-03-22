@@ -1,18 +1,25 @@
 import { AsyncPipe, CurrencyPipe } from "@angular/common";
 import { Component, inject, Input } from "@angular/core";
 import { Observable } from "rxjs";
-import { AddToCartButton } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
+import { AddToCartButtonComponent } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
 import { ProductInfo } from "src/app/shared/models/product-info";
 import { ProductService } from "src/app/shared/services/product-service";
-import { StarRating } from "src/app/shared/components/star-rating/star-rating";
+import { StarRatingComponent } from "src/app/shared/components/star-rating/star-rating";
+import { StockColorDirective } from "src/app/shared/directives/stock-color-directive";
 
 @Component({
-  selector: "product-info-section",
-  imports: [AsyncPipe, AddToCartButton, CurrencyPipe, StarRating],
+  selector: "aa-product-info-section",
+  imports: [
+    AsyncPipe,
+    AddToCartButtonComponent,
+    CurrencyPipe,
+    StarRatingComponent,
+    StockColorDirective,
+  ],
   templateUrl: "product-info-section.component.html",
   styleUrl: "./product-info-section.css",
 })
-export class ProductInfoSection {
+export class ProductInfoSectionComponent {
   @Input({ required: true })
   productId: string = "";
   product$!: Observable<ProductInfo>;

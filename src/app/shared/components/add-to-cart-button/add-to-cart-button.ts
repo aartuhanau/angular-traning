@@ -2,12 +2,12 @@ import { Component, inject, Input, OnInit } from "@angular/core";
 import { CartService } from "../../services/cart-service";
 
 @Component({
-  selector: "add-to-cart-button",
+  selector: "aa-add-to-cart-button",
   imports: [],
   templateUrl: "add-to-cart-button.component.html",
   styleUrl: "add-to-cart-button.css",
 })
-export class AddToCartButton implements OnInit {
+export class AddToCartButtonComponent implements OnInit {
   private _counter: number = 0;
   private cartService: CartService = inject(CartService);
   @Input()

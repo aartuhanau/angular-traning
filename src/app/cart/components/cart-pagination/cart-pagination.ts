@@ -12,12 +12,12 @@ import { PaginationInfo } from "src/app/shared/models/pagination-info";
 import { CartService } from "src/app/shared/services/cart-service";
 
 @Component({
-  selector: "cart-pagination",
+  selector: "aa-cart-pagination",
   imports: [AsyncPipe],
   templateUrl: "cart-pagination.component.html",
   styleUrl: "cart-pagination.css",
 })
-export class CartPagination implements OnInit {
+export class CartPaginationComponent implements OnInit {
   private cartService: CartService = inject(CartService);
   @Input()
   currentPage: number = 0;

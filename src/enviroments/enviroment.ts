@@ -1,16 +1,16 @@
 export const enviroment = {
   apiUrl: "http://localhost:3000",
   mapper: {
-    priceTo: "price:gte",
-    priceFrom: "price:lte",
+    priceFrom: "price:gte",
+    priceTo: "price:lte",
     ratingFrom: "rating.rate:gte",
     ratingTo: "rating.rate:lte",
     inStock: "stock:gte",
     hasReviews: "rating.count:gte",
   },
   mapperReverse: {
-    "price:gte": "priceTo",
-    "price:lte": "priceFrom",
+    "price:lte": "priceTo",
+    "price:gte": "priceFrom",
     "rating.rate:gte": "ratingFrom",
     "rating.rate:lte": "ratingTo",
     "stock:gte": "inStock",

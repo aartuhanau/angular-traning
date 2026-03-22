@@ -4,12 +4,12 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { RatingInfo } from "../../models/rating-info";
 
 @Component({
-  selector: "star-rating",
+  selector: "aa-star-rating",
   imports: [FontAwesomeModule],
   templateUrl: "star-rating.component.html",
   styleUrl: "./star-rating.css",
 })
-export class StarRating {
+export class StarRatingComponent {
   @Input()
   isReviewVisible: boolean = false;
   @Input()

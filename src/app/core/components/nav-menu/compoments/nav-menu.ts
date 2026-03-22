@@ -4,12 +4,12 @@ import { map, Observable } from "rxjs";
 import { CartService } from "src/app/shared/services/cart-service";
 
 @Component({
-  selector: "nav-menu",
+  selector: "aa-nav-menu",
   imports: [RouterLink],
   templateUrl: "nav-menu.component.html",
   styleUrl: "nav-menu.css",
 })
-export class NavMenu implements OnInit {
+export class NavMenuComponent implements OnInit {
   private cartService: CartService = inject(CartService);
   cartId$!: Observable<string>;
 

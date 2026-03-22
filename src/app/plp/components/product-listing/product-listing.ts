@@ -7,15 +7,15 @@ import { AsyncPipe } from "@angular/common";
 import { SearchPipe } from "src/app/shared/pipes/search-pipe";
 import { ActivatedRoute } from "@angular/router";
 import { FacetService } from "src/app/shared/services/facet-service";
-import { SearchBadgeComponent } from "../search-badge-component/search-badge-component";
+import { SearchPanelComponent } from "../search-panel-component/search-panel-component";
 
 @Component({
-  selector: "product-listing",
-  imports: [ProductListingItem, AsyncPipe, SearchPipe, SearchBadgeComponent],
+  selector: "aa-product-listing",
+  imports: [ProductListingItem, AsyncPipe, SearchPipe, SearchPanelComponent],
   templateUrl: "product-listing.component.html",
   styleUrl: "product-listing.css",
 })
-export class ProductListing implements OnInit {
+export class ProductListingComponent implements OnInit {
   private productService: ProductService = inject(ProductService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   private facetService: FacetService = inject(FacetService);

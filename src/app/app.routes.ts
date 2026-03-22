@@ -1,24 +1,24 @@
 import { Routes } from "@angular/router";
-import { PlpPage } from "./plp/components/plp-page/plp-page";
-import { DetailsPage } from "./details-page/components/details-page/details-page";
-import { EditPage } from "./edit-page/components/edit-page/edit-page";
-import { CartPage } from "./cart/components/cart-view/cart-view";
+import { PlpPageComponent } from "./plp/components/plp-page/plp-page";
+import { DetailsPageComponent } from "./details-page/components/details-page/details-page";
+import { EditPageComponent } from "./edit-page/components/edit-page/edit-page";
+import { CartPageComponent } from "./cart/components/cart-view/cart-view";
 
 export const routes: Routes = [
   {
     path: "",
-    component: PlpPage,
+    component: PlpPageComponent,
   },
   {
     path: "product/:id",
-    component: DetailsPage,
+    component: DetailsPageComponent,
   },
   {
     path: "product/edit/:id",
-    component: EditPage,
+    component: EditPageComponent,
   },
   {
     path: "cart",
-    component: CartPage,
+    component: CartPageComponent,
   },
 ];

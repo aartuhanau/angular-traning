@@ -3,10 +3,10 @@ import { Component, Input } from "@angular/core";
 import { ProductInfo } from "src/app/shared/models/product-info";
 import { ControlPanel } from "../control-panel/control-panel";
 import { RouterLink } from "@angular/router";
-import { StarRating } from "src/app/shared/components/star-rating/star-rating";
+import { StarRatingComponent } from "src/app/shared/components/star-rating/star-rating";
 @Component({
   selector: "product-listing-item",
-  imports: [CurrencyPipe, ControlPanel, RouterLink, StarRating],
+  imports: [CurrencyPipe, ControlPanel, RouterLink, StarRatingComponent],
   templateUrl: "product-listing-item.component.html",
   styleUrl: "product-listing-item.css",
 })

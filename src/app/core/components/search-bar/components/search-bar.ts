@@ -4,12 +4,12 @@ import { faSistrix } from "@fortawesome/free-brands-svg-icons";
 import { SearchState } from "src/app/shared/models/search-state";
 
 @Component({
-  selector: "search-bar",
+  selector: "aa-search-bar",
   imports: [FontAwesomeModule],
   templateUrl: "search-bar.component.html",
   styleUrl: "search-bar.css",
 })
-export class SearchBar {
+export class SearchBarComponent {
   searchState = inject(SearchState);
   faSistrix = faSistrix;
 

@@ -1,11 +1,15 @@
 import { Component, Input } from "@angular/core";
-import { AddToCartButton } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
-import { DeleteButton } from "src/app/shared/components/delete-button/delete-button";
-import { EditButton } from "src/app/shared/components/edit-button/edit-button";
+import { AddToCartButtonComponent } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
+import { DeleteButtonComponent } from "src/app/shared/components/delete-button/delete-button";
+import { EditButtonComponent } from "src/app/shared/components/edit-button/edit-button";
 
 @Component({
   selector: "control-panel",
-  imports: [DeleteButton, EditButton, AddToCartButton],
+  imports: [
+    DeleteButtonComponent,
+    EditButtonComponent,
+    AddToCartButtonComponent,
+  ],
   templateUrl: "control-panel.component.html",
   styleUrl: "./control-panel.css",
 })

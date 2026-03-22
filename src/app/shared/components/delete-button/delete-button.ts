@@ -2,17 +2,17 @@ import { Component, inject, Input } from "@angular/core";
 import { ProductService } from "../../services/product-service";
 
 @Component({
-  selector: "delete-button",
+  selector: "aa-delete-button",
   imports: [],
   templateUrl: "delete-button.component.html",
   styleUrl: "./delete-button.css",
 })
-export class DeleteButton {
+export class DeleteButtonComponent {
   private productService: ProductService = inject(ProductService);
   @Input({ required: true })
-  id = 0;
+  productId = 0;
 
   deleteProduct(): void {
-    this.productService.deleteProduct(this.id);
+    this.productService.deleteProduct(this.productId);
   }
 }

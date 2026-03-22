@@ -2,24 +2,25 @@ import { AsyncPipe } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Observable, switchMap } from "rxjs";
+import { BehaviorSubject, Observable, shareReplay, switchMap } from "rxjs";
 import { FacetService } from "src/app/shared/services/facet-service";
 import { MapFacetService } from "src/app/shared/services/mapper-service";
 import { ProductService } from "src/app/shared/services/product-service";
 
 @Component({
-  selector: "filter-form",
+  selector: "aa-filter-form",
   imports: [ReactiveFormsModule, AsyncPipe],
   templateUrl: "filter-form.component.html",
   styleUrl: "filter-form.css",
 })
-export class FilterForm implements OnInit {
+export class FilterFormComponent implements OnInit {
   private facetService: FacetService = inject(FacetService);
   private router: Router = inject(Router);
   private route: ActivatedRoute = inject(ActivatedRoute);
   private mapFacetService: MapFacetService = inject(MapFacetService);
   private productService: ProductService = inject(ProductService);
-  filterCount$!: Observable<number>;
+  private filterCountSubject = new BehaviorSubject<number>(0);
+  filterCount$: Observable<number> = this.filterCountSubject.asObservable();
 
   searchForm = new FormGroup({
     priceFrom: new FormControl(),
@@ -41,14 +42,16 @@ export class FilterForm implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filterCount$! = this.searchForm.valueChanges.pipe(
-      switchMap(() => {
-        const params = this.facetService.getFacetHttpParams(
-          this.facetService.mapFormToUrlParams(this.searchForm),
-        );
-        return this.productService.getProductCount(params);
-      }),
-    );
+    this.searchForm.valueChanges
+      .pipe(
+        switchMap(() => {
+          const params = this.facetService.getFacetHttpParams(
+            this.facetService.mapFormToUrlParams(this.searchForm),
+          );
+          return this.productService.getProductCount(params);
+        }),
+      )
+      .subscribe((count) => this.filterCountSubject.next(count));
     this.route.queryParamMap.subscribe((queryParams) => {
       this.facetService.getFacetList(queryParams).forEach((facetInfo) => {
         if (this.mapFacetService.isFacetValueDefault(facetInfo.code)) {

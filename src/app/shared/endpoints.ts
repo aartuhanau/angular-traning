@@ -6,5 +6,6 @@ export const backendConfig = {
     getReviews: "/reviews/",
     getProduct: "/products/{id}",
     getCart: "/cart/{id}",
+    updateCart: "/cart/{id}",
   },
 };

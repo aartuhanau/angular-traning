@@ -15,13 +15,13 @@ import { ProductInfo } from "src/app/shared/models/product-info";
 import { ProductService } from "src/app/shared/services/product-service";
 
 @Component({
-  selector: "edit-form",
+  selector: "aa-edit-form",
   imports: [ReactiveFormsModule],
   templateUrl: "edit-form.component.html",
   styleUrl: "./edit-form.css",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditForm implements OnInit {
+export class EditFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private productService = inject(ProductService);
   @Input({ required: true })

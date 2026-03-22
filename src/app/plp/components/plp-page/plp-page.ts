@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
-import { ProductListing } from "../product-listing/product-listing";
-import { FilterSection } from "../filter-section/filter-section";
+import { ProductListingComponent } from "../product-listing/product-listing";
+import { FilterFormComponent } from "../filter/filter-form";
 
 @Component({
-  selector: "app-plp-page",
-  imports: [ProductListing, FilterSection],
+  selector: "aa-plp-page",
+  imports: [ProductListingComponent, FilterFormComponent],
   templateUrl: "plp-page.component.html",
   styleUrl: "plp-page.css",
 })
-export class PlpPage {}
+export class PlpPageComponent {}

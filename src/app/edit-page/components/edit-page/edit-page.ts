@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { EditForm } from "../edit-form/edit-form";
+import { EditFormComponent } from "../edit-form/edit-form";
 import { ProductService } from "src/app/shared/services/product-service";
 import { ActivatedRoute } from "@angular/router";
 import { AsyncPipe } from "@angular/common";
@@ -8,11 +8,11 @@ import { Observable } from "rxjs";
 
 @Component({
   selector: "edit-page",
-  imports: [EditForm, AsyncPipe],
+  imports: [EditFormComponent, AsyncPipe],
   templateUrl: "edit-page.component.html",
   styleUrl: "./edit-page.css",
 })
-export class EditPage implements OnInit {
+export class EditPageComponent implements OnInit {
   productService: ProductService = inject(ProductService);
   route: ActivatedRoute = inject(ActivatedRoute);
   productId!: string;

@@ -1,0 +1,7 @@
+<div class="product-listing_facets-panel">
+  @let list = facetList$ | async;
+  @for (facetInfo of list; track $index) {
+    <aa-search-badge [facetInfo]="facetInfo" />
+  }
+  <aa-clean-all-button [showButton]="(list?.length ?? 0) > 0" />
+</div>

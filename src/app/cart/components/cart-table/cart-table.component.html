@@ -16,7 +16,7 @@
       <td class="cart-table__table-value">{{ entry.price }}</td>
       <td class="cart-table__table-value">{{ entry.count * entry.price }}</td>
       <td class="cart-table__table-value">
-        <add-to-cart-button [productId]="entry.id" [updateCounter]="true" />
+        <aa-add-to-cart-button [productId]="entry.id" [updateCounter]="true" />
       </td>
       <td class="cart-table__table-value" (click)="removeProduct(entry.id)">
         <fa-icon [icon]="faXmark" size="xl" />
@@ -26,4 +26,6 @@
     <div class="cart-table__empty">Cart is empty</div>
   }
 </table>
-<cart-pagination (paginationInfo)="updatePagination($event)"></cart-pagination>
+<aa-cart-pagination
+  (paginationInfo)="updatePagination($event)"
+></aa-cart-pagination>

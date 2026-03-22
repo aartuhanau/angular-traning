@@ -3,6 +3,26 @@
   [formGroup]="searchForm"
   (ngSubmit)="facetSearch()"
 >
+  <label for="priceFrom">Price from</label>
+  <input
+    type="number"
+    formControlName="priceFrom"
+    name="priceFrom"
+    id="priceFrom"
+    min="0"
+    placeholder="10"
+  />
+
+  <label for="priceTo">Rating to</label>
+  <input
+    type="number"
+    formControlName="priceTo"
+    name="priceTo"
+    id="priceTo"
+    min="0"
+    placeholder="20"
+  />
+
   <label for="ratingFrom">Rating from</label>
   <input
     type="number"
