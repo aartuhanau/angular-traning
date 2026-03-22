@@ -1,1 +1,8 @@
-<auth-form-component></auth-form-component>
+<div class="aa-auth-component__login" (click)="changeType('singin')">Login</div>
+<div class="aa-auth-component__signup" (click)="changeType('signup')">
+  Register
+</div>
+
+<div class="aa-auth-form-component__container">
+  <aa-auth-form-component [type]="type" />
+</div>

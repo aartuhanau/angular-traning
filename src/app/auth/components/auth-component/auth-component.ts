@@ -2,9 +2,14 @@ import { Component } from "@angular/core";
 import { AuthFormComponent } from "../auth-form-component/auth-form-component";
 
 @Component({
-  selector: "auth-component",
+  selector: "aa-auth-component",
   imports: [AuthFormComponent],
   templateUrl: "./auth-component.html",
-  styleUrl: "./auth-component.scss",
+  styleUrl: "./auth-component.css",
 })
-export class AuthComponent {}
+export class AuthComponent {
+  type: "signup" | "singin" = "singin";
+  changeType(typeValue: "signup" | "singin" = "singin"): void {
+    this.type = typeValue;
+  }
+}

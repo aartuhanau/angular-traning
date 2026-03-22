@@ -7,5 +7,7 @@ export const backendConfig = {
     getProduct: "/products/{id}",
     getCart: "/cart/{id}",
     updateCart: "/cart/{id}",
+    createUser: "/users/",
+    authUser: "/users/?email={id}&password={password}",
   },
 };

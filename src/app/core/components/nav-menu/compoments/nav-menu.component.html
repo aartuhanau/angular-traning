@@ -5,7 +5,13 @@
   <div class="nav-node">
     <a [routerLink]="['cart']">Cart</a>
   </div>
-  <div class="nav-node">
-    <a [routerLink]="['auth']">Authentication</a>
-  </div>
+  @if (isAnonymous()) {
+    <div class="nav-node">
+      <a [routerLink]="['auth']">Authentication</a>
+    </div>
+  } @else {
+    <div class="nav-node">
+      <a (click)="logout()">Logout</a>
+    </div>
+  }
 </div>

@@ -1,4 +1,43 @@
-<form>
-  <input type="email" [(ngModel)]="user.email" required />
-  <input type="password" [(ngModel)]="user.password" required minlength="8" />
+<form #authForm="ngForm">
+  @if( this.serverErrorMessage !== null){ {{this.serverErrorMessage}} }
+  <label for="email">Email</label>
+  <input
+    type="email"
+    [(ngModel)]="user.email"
+    required
+    id="email"
+    name="email"
+  />
+  <label for="password">Password</label>
+  <input
+    type="password"
+    [(ngModel)]="user.password"
+    required
+    name="password"
+    minlength="8"
+    id="password"
+  />
+  @if (type === 'signup') {
+  <input
+    [passwordMatchInput]="user.password"
+    type="password"
+    [(ngModel)]="user.repeatPassword"
+    name="repeatPassword"
+    required
+    minlength="8"
+    id="repeatPassword"
+  />
+  <input
+    type="submit"
+    (click)="createNewUser()"
+    [disabled]="authForm.form.invalid"
+  />
+  } @else {
+  <input
+    type="submit"
+    (click)="authUser()"
+    [disabled]="authForm.form.invalid"
+  />
+
+  }
 </form>
