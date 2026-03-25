@@ -8,7 +8,7 @@
 }
 
 .product-listing-item:hover {
-  border: 2px solid #e74c3c;
+  border: 2px solid var(--primary-color);
 }
 
 .product-listing-item__price-section {

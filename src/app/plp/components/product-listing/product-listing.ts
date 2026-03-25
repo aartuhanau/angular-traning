@@ -6,7 +6,6 @@ import { map, Observable, switchMap } from "rxjs";
 import { AsyncPipe } from "@angular/common";
 import { SearchPipe } from "src/app/shared/pipes/search-pipe";
 import { ActivatedRoute } from "@angular/router";
-import { FacetService } from "src/app/shared/services/facet-service";
 import { SearchPanelComponent } from "../search-panel-component/search-panel-component";
 
 @Component({
@@ -18,14 +17,12 @@ import { SearchPanelComponent } from "../search-panel-component/search-panel-com
 export class ProductListingComponent implements OnInit {
   private productService: ProductService = inject(ProductService);
   private route: ActivatedRoute = inject(ActivatedRoute);
-  private facetService: FacetService = inject(FacetService);
   productInfoList$!: Observable<ProductInfo[]>;
 
   ngOnInit(): void {
     this.productInfoList$ = this.route.queryParamMap.pipe(
       switchMap((queryMap) => {
-        const params = this.facetService.getFacetHttpParams(queryMap);
-        return this.productService.getProducts(params);
+        return this.productService.getProducts(queryMap);
       }),
     );
   }

@@ -27,11 +27,13 @@
 
 .add-to-cart-button__section {
   display: flex;
+  margin-bottom: 10px;
   gap: 20px;
 }
 
 .product-info-section__stock {
-  margin-bottom: 20px;
+  display: flex;
+  align-self: center;
 }
 .product-info-section__stock--outofstock {
   color: gray;

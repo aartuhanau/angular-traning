@@ -1,10 +1,15 @@
-<form #authForm="ngForm">
-  @if( this.serverErrorMessage !== null){ {{this.serverErrorMessage}} }
+<form class="auth-form__form" #authForm="ngForm">
+  @if( (this.serverErrorMessage$ | async) !== null){
+  <div class="auth-form__error-message">
+    {{this.serverErrorMessage$ | async }}
+  </div>
+  }
   <label for="email">Email</label>
   <input
     type="email"
     [(ngModel)]="user.email"
     required
+    pattern="^\S+@\S+\.\S+$"
     id="email"
     name="email"
   />
@@ -18,6 +23,7 @@
     id="password"
   />
   @if (type === 'signup') {
+  <label for="repeatPassword">Repeat password</label>
   <input
     [passwordMatchInput]="user.password"
     type="password"
@@ -31,12 +37,14 @@
     type="submit"
     (click)="createNewUser()"
     [disabled]="authForm.form.invalid"
+    value="Register"
   />
   } @else {
   <input
     type="submit"
     (click)="authUser()"
     [disabled]="authForm.form.invalid"
+    value="Login"
   />
 
   }

@@ -1,14 +1,15 @@
 @let cart = cartInfo$ | async;
-<table>
-  <tr>
-    <th>Entry number</th>
+<table class="cart-table">
+  <tr class="cart-table__table-header">
+    <th>Product Id</th>
     <th>Title</th>
     <th>Price per entry</th>
     <th>Total price</th>
     <th>Count</th>
+    <th></th>
   </tr>
   @for (entry of cart?.products | slice: start : end; track $index) {
-    <tr>
+    <tr class="cart-table__table-row">
       <td class="cart-table__table-value">
         {{ entry.id }}
       </td>

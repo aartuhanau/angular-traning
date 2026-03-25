@@ -3,7 +3,7 @@
   min-height: 100px;
   max-height: 125px;
   align-items: center;
-  border-bottom: solid 2px #e74c3c;
+  border-bottom: solid 2px var(--primary-color);
   justify-content: center;
 }
 

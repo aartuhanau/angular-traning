@@ -22,7 +22,7 @@ export class CartPaginationComponent implements OnInit {
   @Input()
   currentPage: number = 0;
   @Input()
-  pageSize: number = 3;
+  pageSize: number = 5;
   @Input()
   entriesCount!: number;
   pages!: Observable<number[]>;
@@ -36,11 +36,12 @@ export class CartPaginationComponent implements OnInit {
       .pipe(
         map((cart) =>
           Array.from(
-            { length: cart.products.length / this.pageSize },
+            { length: Math.ceil(cart.products.length / this.pageSize) },
             (_, index) => index,
           ),
         ),
       );
+    this.updatePagination(this.currentPage);
   }
 
   updatePagination(page: number): void {

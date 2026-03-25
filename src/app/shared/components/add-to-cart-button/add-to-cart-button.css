@@ -2,3 +2,35 @@
   display: flex;
   flex-direction: row;
 }
+
+.add-to-cart-button__container {
+  background-color: white;
+  border: solid 2px black;
+  border-radius: 50px;
+  margin: 0 auto;
+  width: 110px;
+  display: flex;
+  justify-content: center;
+  height: 28px;
+}
+
+button {
+  all: unset;
+}
+.add-to-cart-button__counter {
+  height: 100%;
+  width: 60px;
+  font-size: 20px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.add-to-cart-button__decrease-button {
+  padding-left: 10px;
+}
+
+.add-to-cart-button__increase-button {
+  padding-right: 10px;
+}

@@ -45,10 +45,7 @@ export class FilterFormComponent implements OnInit {
     this.searchForm.valueChanges
       .pipe(
         switchMap(() => {
-          const params = this.facetService.getFacetHttpParams(
-            this.facetService.mapFormToUrlParams(this.searchForm),
-          );
-          return this.productService.getProductCount(params);
+          return this.productService.getProductCount(this.searchForm);
         }),
       )
       .subscribe((count) => this.filterCountSubject.next(count));

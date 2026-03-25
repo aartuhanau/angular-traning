@@ -1,6 +1,18 @@
-<div class="aa-auth-component__login" (click)="changeType('singin')">Login</div>
-<div class="aa-auth-component__signup" (click)="changeType('signup')">
-  Register
+<div class="aa-auth-component__chooser">
+  <div
+    class="aa-auth-component__login aa-auth-component__chooser-variant"
+    [class.aa-auth-component__chooser-variant--active]="type==='singin'"
+    (click)="changeType('singin')"
+  >
+    Login
+  </div>
+  <div
+    class="aa-auth-component__signup aa-auth-component__chooser-variant"
+    [class.aa-auth-component__chooser-variant--active]="type==='signup'"
+    (click)="changeType('signup')"
+  >
+    Register
+  </div>
 </div>
 
 <div class="aa-auth-form-component__container">

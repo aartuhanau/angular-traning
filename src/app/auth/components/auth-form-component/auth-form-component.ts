@@ -4,10 +4,12 @@ import { UserInfo } from "src/app/shared/models/user-info";
 import { SignUpValidationDirective } from "src/app/shared/directives/singup-validation-directive";
 import { AuthService } from "src/app/shared/services/auth-service";
 import { Router } from "@angular/router";
+import { BehaviorSubject, Observable } from "rxjs";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "aa-auth-form-component",
-  imports: [FormsModule, SignUpValidationDirective],
+  imports: [FormsModule, SignUpValidationDirective, AsyncPipe],
   templateUrl: "./auth-form-component.html",
   styleUrl: "./auth-form-component.css",
 })
@@ -16,7 +18,11 @@ export class AuthFormComponent {
   private router: Router = inject(Router);
   @Input()
   type: "signup" | "singin" = "singin";
-  serverErrorMessage: string | null = null;
+  serverErrorObject: BehaviorSubject<string | null> = new BehaviorSubject<
+    string | null
+  >(null);
+  serverErrorMessage$: Observable<string | null> =
+    this.serverErrorObject.asObservable();
 
   user = new UserInfo("", "");
 
@@ -25,7 +31,7 @@ export class AuthFormComponent {
       if (this.authService.isAuthenticated()) {
         this.router.navigate([""]);
       } else {
-        this.serverErrorMessage = "User is not created. Server error";
+        this.serverErrorObject.next("User is not created. Server error");
       }
     });
   }
@@ -34,13 +40,13 @@ export class AuthFormComponent {
     this.authService.authUser(this.user).subscribe({
       next: (user) => {
         if (user === null || (Array.isArray(user) && user.length === 0)) {
-          this.serverErrorMessage = "Incorrect email or password";
+          this.serverErrorObject.next("Incorrect email or password");
         } else {
           this.router.navigate([""]);
         }
       },
       error: (error) => {
-        this.serverErrorMessage = "Incorrect email or password";
+        this.serverErrorObject.next("Incorrect email or password");
       },
     });
   }

@@ -25,7 +25,7 @@ export class CartTableComponent implements OnInit {
   private cartService: CartService = inject(CartService);
   cartInfo$!: Observable<CartInfo | null>;
   start: number = 0;
-  end: number = 3;
+  end: number = 5;
   faXmark = faXmark;
 
   ngOnInit(): void {
