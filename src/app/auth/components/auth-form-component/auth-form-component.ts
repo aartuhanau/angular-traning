@@ -1,15 +1,12 @@
 import { Component, inject, Input } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { UserInfo } from "src/app/shared/models/user-info";
-import { SignUpValidationDirective } from "src/app/shared/directives/singup-validation-directive";
 import { AuthService } from "src/app/shared/services/auth-service";
 import { Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
-import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "aa-auth-form-component",
-  imports: [FormsModule, SignUpValidationDirective, AsyncPipe],
+  standalone: false,
   templateUrl: "./auth-form-component.html",
   styleUrl: "./auth-form-component.css",
 })

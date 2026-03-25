@@ -1,16 +1,15 @@
-import { AsyncPipe } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
-import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BehaviorSubject, Observable, shareReplay, switchMap } from "rxjs";
+import { BehaviorSubject, Observable, switchMap } from "rxjs";
 import { FacetService } from "src/app/shared/services/facet-service";
 import { MapFacetService } from "src/app/shared/services/mapper-service";
 import { ProductService } from "src/app/shared/services/product-service";
 
 @Component({
   selector: "aa-filter-form",
-  imports: [ReactiveFormsModule, AsyncPipe],
-  templateUrl: "filter-form.component.html",
+  standalone: false,
+  templateUrl: "./filter-form.component.html",
   styleUrl: "filter-form.css",
 })
 export class FilterFormComponent implements OnInit {

@@ -1,4 +1,3 @@
-import { AsyncPipe } from "@angular/common";
 import {
   Component,
   EventEmitter,
@@ -13,7 +12,7 @@ import { CartService } from "src/app/shared/services/cart-service";
 
 @Component({
   selector: "aa-cart-pagination",
-  imports: [AsyncPipe],
+  standalone: false,
   templateUrl: "cart-pagination.component.html",
   styleUrl: "cart-pagination.css",
 })

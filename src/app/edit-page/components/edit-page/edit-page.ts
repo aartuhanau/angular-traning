@@ -1,14 +1,12 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { EditFormComponent } from "../edit-form/edit-form";
 import { ProductService } from "src/app/shared/services/product-service";
 import { ActivatedRoute } from "@angular/router";
-import { AsyncPipe } from "@angular/common";
 import { ProductInfo } from "src/app/shared/models/product-info";
 import { Observable } from "rxjs";
 
 @Component({
   selector: "edit-page",
-  imports: [EditFormComponent, AsyncPipe],
+  standalone: false,
   templateUrl: "edit-page.component.html",
   styleUrl: "./edit-page.css",
 })

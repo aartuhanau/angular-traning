@@ -3,7 +3,7 @@ import { AuthFormComponent } from "../auth-form-component/auth-form-component";
 
 @Component({
   selector: "aa-auth-component",
-  imports: [AuthFormComponent],
+  standalone: false,
   templateUrl: "./auth-component.html",
   styleUrl: "./auth-component.css",
 })

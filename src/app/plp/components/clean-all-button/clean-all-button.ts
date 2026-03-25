@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: "aa-clean-all-button",
-  imports: [],
+  standalone: false,
   templateUrl: "clean-all-button.component.html",
   styleUrl: "clean-all-button.css",
 })

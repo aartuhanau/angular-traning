@@ -5,7 +5,7 @@ import { SearchState } from "src/app/shared/models/search-state";
 
 @Component({
   selector: "aa-search-bar",
-  imports: [FontAwesomeModule],
+  standalone: false,
   templateUrl: "search-bar.component.html",
   styleUrl: "search-bar.css",
 })

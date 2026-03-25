@@ -1,12 +1,11 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { RouterLink } from "@angular/router";
 import { map, Observable } from "rxjs";
 import { AuthService } from "src/app/shared/services/auth-service";
 import { CartService } from "src/app/shared/services/cart-service";
 
 @Component({
   selector: "aa-nav-menu",
-  imports: [RouterLink],
+  standalone: false,
   templateUrl: "nav-menu.component.html",
   styleUrl: "nav-menu.css",
 })

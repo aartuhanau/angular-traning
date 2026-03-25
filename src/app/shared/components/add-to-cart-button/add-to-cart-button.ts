@@ -2,8 +2,8 @@ import { Component, inject, Input, OnInit } from "@angular/core";
 import { CartService } from "../../services/cart-service";
 
 @Component({
+  standalone: false,
   selector: "aa-add-to-cart-button",
-  imports: [],
   templateUrl: "add-to-cart-button.component.html",
   styleUrl: "add-to-cart-button.css",
 })

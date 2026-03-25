@@ -1,15 +1,12 @@
 import { Component, inject } from "@angular/core";
-import { SearchBadgeComponent } from "../search-badge/search-badge";
 import { ActivatedRoute } from "@angular/router";
 import { FacetInfo } from "src/app/shared/models/facet-info";
 import { FacetService } from "src/app/shared/services/facet-service";
 import { map, Observable } from "rxjs";
-import { AsyncPipe } from "@angular/common";
-import { CleanAllButtonComponent } from "../clean-all-button/clean-all-button";
 
 @Component({
   selector: "aa-search-panel-component",
-  imports: [SearchBadgeComponent, AsyncPipe, CleanAllButtonComponent],
+  standalone: false,
   templateUrl: "search-panel.component.html",
   styleUrl: "search-panel.css",
 })

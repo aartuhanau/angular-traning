@@ -1,23 +1,14 @@
-import { AsyncPipe, SlicePipe } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { CartInfo } from "src/app/shared/models/cart-info";
 import { CartService } from "src/app/shared/services/cart-service";
-import { CartPaginationComponent } from "../cart-pagination/cart-pagination";
 import { PaginationInfo } from "src/app/shared/models/pagination-info";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { AddToCartButtonComponent } from "src/app/shared/components/add-to-cart-button/add-to-cart-button";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "aa-cart-table",
-  imports: [
-    AsyncPipe,
-    SlicePipe,
-    CartPaginationComponent,
-    FontAwesomeModule,
-    AddToCartButtonComponent,
-  ],
+  standalone: false,
   templateUrl: "cart-table.component.html",
   styleUrl: "cart-table.css",
 })

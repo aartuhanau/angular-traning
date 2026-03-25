@@ -1,15 +1,7 @@
-import {
-  Directive,
-  ElementRef,
-  inject,
-  Input,
-  input,
-  OnChanges,
-  OnInit,
-} from "@angular/core";
+import { Directive, ElementRef, inject, Input, OnChanges } from "@angular/core";
 @Directive({
   selector: "[aaStockColor]",
-  standalone: true,
+  standalone: false,
 })
 export class StockColorDirective implements OnChanges {
   private el = inject(ElementRef);

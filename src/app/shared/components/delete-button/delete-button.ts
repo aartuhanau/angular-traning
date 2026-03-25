@@ -3,8 +3,8 @@ import { ProductService } from "../../services/product-service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
+  standalone: false,
   selector: "aa-delete-button",
-  imports: [],
   templateUrl: "delete-button.component.html",
   styleUrl: "./delete-button.css",
 })

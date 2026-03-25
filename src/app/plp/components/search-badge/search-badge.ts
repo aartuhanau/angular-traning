@@ -1,13 +1,12 @@
 import { Component, inject, Input } from "@angular/core";
 import { Router } from "@angular/router";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FacetInfo } from "src/app/shared/models/facet-info";
 import { MapFacetService } from "src/app/shared/services/mapper-service";
 
 @Component({
   selector: "aa-search-badge",
-  imports: [FontAwesomeModule],
+  standalone: false,
   templateUrl: "search-badge.component.html",
   styleUrl: "search-badge.css",
 })

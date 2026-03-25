@@ -5,6 +5,7 @@ import { ProductInfo } from "../models/product-info";
 @Pipe({
   name: "search",
   pure: false,
+  standalone: false,
 })
 export class SearchPipe implements PipeTransform {
   searchState = inject(SearchState);

@@ -20,6 +20,7 @@ import {
       multi: true,
     },
   ],
+  standalone: false,
 })
 export class SignUpValidationDirective implements Validator {
   private el = inject(ElementRef);

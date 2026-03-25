@@ -5,18 +5,13 @@ import {
   Input,
   OnInit,
 } from "@angular/core";
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProductInfo } from "src/app/shared/models/product-info";
 import { ProductService } from "src/app/shared/services/product-service";
 
 @Component({
   selector: "aa-edit-form",
-  imports: [ReactiveFormsModule],
+  standalone: false,
   templateUrl: "edit-form.component.html",
   styleUrl: "./edit-form.css",
   changeDetection: ChangeDetectionStrategy.OnPush,
