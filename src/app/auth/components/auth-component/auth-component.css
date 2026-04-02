@@ -1,4 +1,11 @@
 .auth-component {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aa-auth-form-component__chooser {
   height: 60px;
   display: flex;
   justify-content: center;

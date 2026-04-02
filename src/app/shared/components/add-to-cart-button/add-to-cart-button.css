@@ -16,7 +16,9 @@
 
 button {
   all: unset;
+  cursor: pointer;
 }
+
 .add-to-cart-button__counter {
   height: 100%;
   width: 60px;

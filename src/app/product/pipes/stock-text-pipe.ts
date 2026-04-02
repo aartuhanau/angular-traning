@@ -1,6 +1,4 @@
-import { inject, Pipe, PipeTransform } from "@angular/core";
-import { SearchState } from "../../shared/models/search-state";
-import { ProductInfo } from "../../shared/models/product-info";
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
   name: "stockText",
