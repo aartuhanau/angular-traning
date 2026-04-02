@@ -1,10 +1,9 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { CartInfo } from "src/app/shared/models/cart-info";
-import { CartService } from "src/app/shared/services/cart-service";
 import { PaginationInfo } from "src/app/shared/models/pagination-info";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { AsyncPipe } from "@angular/common";
+import { CartService } from "../../services/cart-service";
 
 @Component({
   selector: "aa-cart-table",

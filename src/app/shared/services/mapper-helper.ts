@@ -4,7 +4,7 @@ import { enviroment } from "src/enviroments/enviroment";
 @Injectable({
   providedIn: "root",
 })
-export class MapFacetService {
+export class MapFacetHelper {
   getFacetName(queryParam: string): string | null {
     if (this.isValidParam(queryParam)) {
       return enviroment.mapperReverse[queryParam];

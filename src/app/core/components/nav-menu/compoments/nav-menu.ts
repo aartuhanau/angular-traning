@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { map, Observable } from "rxjs";
-import { AuthService } from "src/app/shared/services/auth-service";
-import { CartService } from "src/app/shared/services/cart-service";
+import { AuthService } from "src/app/auth/services/auth-service";
+import { CartService } from "src/app/cart/services/cart-service";
 
 @Component({
   selector: "aa-nav-menu",

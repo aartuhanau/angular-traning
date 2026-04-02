@@ -21,15 +21,7 @@
         [disabled]="(product?.stock ?? 0) < 1"
       />
       <div [aaStockColor]="product?.stock" class="product-info-section__stock">
-        @if ((product?.stock ?? 0) < 1) {
-          Out of stock
-        }
-        @if ((product?.stock ?? 0) > 1 && (product?.stock ?? 0) < 10) {
-          Almost sold out
-        }
-        @if ((product?.stock ?? 0) >= 10) {
-          In stock
-        }
+        {{ product?.stock | stockText }}
       </div>
     </div>
     <div class="product-info-section__price">

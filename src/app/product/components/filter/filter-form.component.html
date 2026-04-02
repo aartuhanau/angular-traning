@@ -65,10 +65,19 @@
     />
   </div>
   @if (searchForm.dirty == true) {
-    @if ((filterCount$ | async) ?? 0 > 0) {
-      <input type="submit" value="Show {{ filterCount$ | async }} variants" />
+    @if (!searchForm.valid) {
+      <input
+        type="submit"
+        [disabled]="!searchForm.valid"
+        value="Incorrect data"
+        disabled
+      />
     } @else {
-      <input type="submit" value="No variants available" disabled />
+      @if ((filterCount$ | async) ?? 0 > 0) {
+        <input type="submit" value="Show {{ filterCount$ | async }} variants" />
+      } @else {
+        <input type="submit" value="No variants available" disabled />
+      }
     }
   }
 </form>

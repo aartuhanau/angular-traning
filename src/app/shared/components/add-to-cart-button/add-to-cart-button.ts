@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from "@angular/core";
-import { CartService } from "../../services/cart-service";
+import { CartService } from "src/app/cart/services/cart-service";
 
 @Component({
   standalone: false,

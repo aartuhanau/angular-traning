@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BehaviorSubject, Observable, switchMap } from "rxjs";
-import { FacetService } from "src/app/shared/services/facet-service";
-import { MapFacetService } from "src/app/shared/services/mapper-service";
+import { FacetHelper } from "src/app/shared/services/facet-helper";
+import { MapFacetHelper } from "src/app/shared/services/mapper-helper";
 import { ProductService } from "src/app/shared/services/product-service";
 
 @Component({
@@ -13,21 +13,25 @@ import { ProductService } from "src/app/shared/services/product-service";
   styleUrl: "filter-form.css",
 })
 export class FilterFormComponent implements OnInit {
-  private facetService: FacetService = inject(FacetService);
+  private facetService: FacetHelper = inject(FacetHelper);
   private router: Router = inject(Router);
   private route: ActivatedRoute = inject(ActivatedRoute);
-  private mapFacetService: MapFacetService = inject(MapFacetService);
+  private mapFacetService: MapFacetHelper = inject(MapFacetHelper);
   private productService: ProductService = inject(ProductService);
   private filterCountSubject = new BehaviorSubject<number>(0);
   filterCount$: Observable<number> = this.filterCountSubject.asObservable();
 
   searchForm = new FormGroup({
-    priceFrom: new FormControl(),
-    priceTo: new FormControl(),
+    priceFrom: new FormControl(null, { validators: Validators.min(0) }),
+    priceTo: new FormControl(null, { validators: Validators.min(0) }),
     inStock: new FormControl(),
     hasReviews: new FormControl(),
-    ratingFrom: new FormControl(),
-    ratingTo: new FormControl(),
+    ratingFrom: new FormControl(null, {
+      validators: [Validators.min(0), Validators.max(5)],
+    }),
+    ratingTo: new FormControl(null, {
+      validators: [Validators.min(0), Validators.max(5)],
+    }),
   });
 
   facetSearch(): void {

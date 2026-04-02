@@ -6,10 +6,8 @@ import { RouterModule } from "@angular/router";
 import { routes } from "./app/app.routes";
 import { SharedModule } from "./app/shared/shared-module";
 import { AuthModule } from "./app/auth/auth-module";
-import { EditModule } from "./app/edit-page/edit-module";
 import { CartModule } from "./app/cart/cart-module";
-import { ListingModule } from "./app/plp/listing-module";
-import { DetailsModule } from "./app/details-page/details-module";
+import { ProductModule } from "./app/product/product-module";
 
 @NgModule({
   bootstrap: [App],
@@ -21,10 +19,8 @@ import { DetailsModule } from "./app/details-page/details-module";
     RouterModule.forRoot(routes),
     SharedModule,
     AuthModule,
-    EditModule,
+    ProductModule,
     CartModule,
-    ListingModule,
-    DetailsModule,
   ],
 })
 export class MyApplicationModule {}

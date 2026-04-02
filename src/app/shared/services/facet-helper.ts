@@ -4,13 +4,13 @@ import { FacetInfo } from "../models/facet-info";
 import { enviroment } from "src/enviroments/enviroment";
 import { HttpParams } from "@angular/common/http";
 import { convertToParamMap, ParamMap } from "@angular/router";
-import { MapFacetService } from "./mapper-service";
+import { MapFacetHelper } from "./mapper-helper";
 
 @Injectable({
   providedIn: "root",
 })
-export class FacetService {
-  private mapperService: MapFacetService = inject(MapFacetService);
+export class FacetHelper {
+  private mapperService: MapFacetHelper = inject(MapFacetHelper);
 
   getFacetHttpParams(queryMap: ParamMap): HttpParams {
     let params = new HttpParams();
@@ -22,7 +22,7 @@ export class FacetService {
     });
     return params;
   }
-  
+
   getFacetList(queryMap: ParamMap): FacetInfo[] {
     const facetList: FacetInfo[] = [];
     Object.values(enviroment.mapper).forEach((value) => {

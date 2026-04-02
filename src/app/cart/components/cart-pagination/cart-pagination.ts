@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 import { map, Observable } from "rxjs";
 import { PaginationInfo } from "src/app/shared/models/pagination-info";
-import { CartService } from "src/app/shared/services/cart-service";
+import { CartService } from "../../services/cart-service";
 
 @Component({
   selector: "aa-cart-pagination",

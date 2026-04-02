@@ -35,3 +35,8 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+  background-color: #ffcccc;
+}

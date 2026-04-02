@@ -1,6 +1,6 @@
 import { Component, inject, Input } from "@angular/core";
 import { UserInfo } from "src/app/shared/models/user-info";
-import { AuthService } from "src/app/shared/services/auth-service";
+import { AuthService } from "src/app/auth/services/auth-service";
 import { Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 

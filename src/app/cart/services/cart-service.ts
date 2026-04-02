@@ -1,18 +1,18 @@
 import { inject, Injectable } from "@angular/core";
-import { RequestBuilderService } from "./request-builder-service";
 import { HttpClient } from "@angular/common/http";
-import { backendConfig } from "../endpoints";
-import { CartInfo } from "../models/cart-info";
-import { CartEntryInfo } from "../models/cart-entry";
+
 import { BehaviorSubject, map, Observable, tap } from "rxjs";
+import { RequestBuilderHelper } from "src/app/shared/services/request-builder-helper";
+import { CartInfo } from "src/app/shared/models/cart-info";
+import { backendConfig } from "src/app/shared/endpoints";
+import { CartEntryInfo } from "src/app/shared/models/cart-entry";
 
 @Injectable({
   providedIn: "root",
 })
 export class CartService {
-  private requestBuilderService: RequestBuilderService = inject(
-    RequestBuilderService,
-  );
+  private requestBuilderService: RequestBuilderHelper =
+    inject(RequestBuilderHelper);
   private http: HttpClient = inject(HttpClient);
   private cartInfoSubject: BehaviorSubject<CartInfo> =
     new BehaviorSubject<CartInfo>({ id: "", products: [], userId: "" });

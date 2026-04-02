@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FacetInfo } from "src/app/shared/models/facet-info";
-import { FacetService } from "src/app/shared/services/facet-service";
+import { FacetHelper } from "src/app/shared/services/facet-helper";
 import { map, Observable } from "rxjs";
 
 @Component({
@@ -13,7 +13,7 @@ import { map, Observable } from "rxjs";
 export class SearchPanelComponent {
   facetList$: Observable<FacetInfo[]>;
   private route: ActivatedRoute = inject(ActivatedRoute);
-  private facetService: FacetService = inject(FacetService);
+  private facetService: FacetHelper = inject(FacetHelper);
 
   constructor() {
     this.facetList$ = this.route.queryParamMap.pipe(

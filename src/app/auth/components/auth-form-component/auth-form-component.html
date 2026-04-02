@@ -40,12 +40,7 @@
     value="Register"
   />
   } @else {
-  <input
-    type="submit"
-    (click)="authUser()"
-    [disabled]="authForm.form.invalid"
-    value="Login"
-  />
+  <input type="submit" (click)="authUser()" value="Login" />
 
   }
 </form>

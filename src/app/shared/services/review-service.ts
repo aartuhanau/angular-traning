@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ReviewInfo } from "../models/review-info";
-import { RequestBuilderService } from "./request-builder-service";
+import { RequestBuilderHelper } from "./request-builder-helper";
 import { backendConfig } from "../endpoints";
 
 @Injectable({
@@ -10,7 +10,7 @@ import { backendConfig } from "../endpoints";
 })
 export class ReviewService {
   private http: HttpClient = inject(HttpClient);
-  private requestBuilder: RequestBuilderService = inject(RequestBuilderService);
+  private requestBuilder: RequestBuilderHelper = inject(RequestBuilderHelper);
 
   getReviews(productId: string): Observable<ReviewInfo[]> {
     let url = this.requestBuilder.getTargetUrl(

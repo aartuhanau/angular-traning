@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
-import { UserInfo } from "../models/user-info";
-import { RequestBuilderService } from "./request-builder-service";
-import { backendConfig } from "../endpoints";
+import { UserInfo } from "../../shared/models/user-info";
+import { RequestBuilderHelper } from "../../shared/services/request-builder-helper";
+import { backendConfig } from "../../shared/endpoints";
 import { HttpClient } from "@angular/common/http";
 import { Observable, tap } from "rxjs";
 
@@ -9,9 +9,8 @@ import { Observable, tap } from "rxjs";
   providedIn: "root",
 })
 export class AuthService {
-  private requestBuilderService: RequestBuilderService = inject(
-    RequestBuilderService,
-  );
+  private requestBuilderService: RequestBuilderHelper =
+    inject(RequestBuilderHelper);
   private http: HttpClient = inject(HttpClient);
   private USER_TOKEN = "userToken";
   private USER_NAME = "userName";

@@ -1,10 +1,10 @@
 import { inject, Injectable } from "@angular/core";
 import { ProductInfo } from "../models/product-info";
-import { RequestBuilderService } from "./request-builder-service";
+import { RequestBuilderHelper } from "./request-builder-helper";
 import { backendConfig } from "../endpoints";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { BehaviorSubject, map, delay, Observable } from "rxjs";
-import { FacetService } from "./facet-service";
+import { FacetHelper } from "./facet-helper";
 import { ParamMap } from "@angular/router";
 import { FormGroup } from "@angular/forms";
 
@@ -12,10 +12,9 @@ import { FormGroup } from "@angular/forms";
   providedIn: "root",
 })
 export class ProductService {
-  private requestBuilderService: RequestBuilderService = inject(
-    RequestBuilderService,
-  );
-  private facetService: FacetService = inject(FacetService);
+  private requestBuilderService: RequestBuilderHelper =
+    inject(RequestBuilderHelper);
+  private facetService: FacetHelper = inject(FacetHelper);
   private http: HttpClient = inject(HttpClient);
   private productListSubject: BehaviorSubject<Array<ProductInfo>> =
     new BehaviorSubject([] as ProductInfo[]);
