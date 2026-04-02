@@ -1,0 +1,25 @@
+<div class="add-to-cart-button__container">
+  @if (counter() > 0) {
+    <button
+      class="add-to-cart-button__decrease-button"
+      (click)="$event.stopPropagation(); decreaseCounter()"
+    >
+      -
+    </button>
+    <div class="add-to-cart-button__counter">{{ counter() }}</div>
+    <button
+      class="add-to-cart-button__increase-button"
+      (click)="$event.stopPropagation(); increaseCounter()"
+    >
+      +
+    </button>
+  } @else {
+    <button
+      class="add-to-cart-button"
+      [disabled]="disabled"
+      (click)="$event.stopPropagation(); addToCart()"
+    >
+      Add to cart
+    </button>
+  }
+</div>

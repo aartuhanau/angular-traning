@@ -1,0 +1,35 @@
+@let product = product$ | async;
+
+<div class="product-info-section">
+  <div class="product-info-section__image-container">
+    <img class="product-info-section__image" [src]="product?.image" />
+  </div>
+  <div class="product-info-section__left-section">
+    <div class="product-info-section__title">
+      {{ product?.title }}
+    </div>
+
+    <div class="product-info-section__rating">
+      <aa-star-rating
+        [isReviewVisible]="true"
+        [rating]="product?.rating ?? null"
+      />
+    </div>
+    <div class="add-to-cart-button__section">
+      <aa-add-to-cart-button
+        [productId]="product?.id ?? 0"
+        [disabled]="(product?.stock ?? 0) < 1"
+      />
+      <div [aaStockColor]="product?.stock" class="product-info-section__stock">
+        {{ product?.stock | stockText }}
+      </div>
+    </div>
+    <div class="product-info-section__price">
+      {{ product?.price | currency: "USD" }}
+    </div>
+
+    <div class="product-info-section__description">
+      {{ product?.description }}
+    </div>
+  </div>
+</div>
