@@ -1,5 +1,4 @@
 import { Component, inject } from "@angular/core";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faSistrix } from "@fortawesome/free-brands-svg-icons";
 import { SearchState } from "src/app/shared/models/search-state";
 

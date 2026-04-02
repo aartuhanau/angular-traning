@@ -1,4 +1,4 @@
-<div class="product-listing_facets-panel">
+<div class="search-panel">
   @let list = facetList$ | async;
   @for (facetInfo of list; track $index) {
     <aa-search-badge [facetInfo]="facetInfo" />

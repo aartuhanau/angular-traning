@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { AuthFormComponent } from "../auth-form-component/auth-form-component";
 
 @Component({
   selector: "aa-auth-component",
