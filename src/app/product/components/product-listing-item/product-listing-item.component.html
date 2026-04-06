@@ -4,7 +4,7 @@
   </div>
   <div class="product-listing-item__title">{{ productInfo.title }}</div>
   <div class="product-listing-item__control-panel">
-    <control-panel [id]="productInfo.id" />
+    <control-panel [productInfo]="productInfo" />
   </div>
   <div class="product-listing-item__price-section">
     <div class="product-listing-item__rating">

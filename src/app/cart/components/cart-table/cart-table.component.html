@@ -17,7 +17,15 @@
       <td class="cart-table__table-value">{{ entry.price }}</td>
       <td class="cart-table__table-value">{{ entry.count * entry.price }}</td>
       <td class="cart-table__table-value">
-        <aa-add-to-cart-button [productId]="entry.id" [updateCounter]="true" />
+        <aa-add-to-cart-button
+          [productInfo]="{
+            id: entry.id,
+            title: entry.title,
+            price: entry.price,
+          }"
+          [count]="entry.count"
+          [updateCounter]="true"
+        />
       </td>
       <td class="cart-table__table-value" (click)="removeProduct(entry.id)">
         <fa-icon [icon]="faXmark" size="xl" />

@@ -16,7 +16,6 @@
   } @else {
     <button
       class="add-to-cart-button"
-      [disabled]="disabled"
       (click)="$event.stopPropagation(); addToCart()"
     >
       Add to cart

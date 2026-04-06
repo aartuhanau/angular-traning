@@ -12,6 +12,6 @@ export class StarRatingComponent {
   @Input()
   isReviewVisible: boolean = false;
   @Input()
-  rating: RatingInfo | null = null;
+  rating: RatingInfo | null | undefined = null;
   faStar = faStar;
 }

@@ -52,12 +52,17 @@ export class CartService {
     this.updateCart(cartInfo);
   }
 
-  addProduct(productId: number, count: number) {
+  addProduct(productId: number, count: number, title?: string, price?: number) {
     const cartInfo = this.cartInfoSubject.value;
     let entry: CartEntryInfo | undefined =
       this.getCartEntryForProduct(productId);
     if (entry === undefined) {
-      entry = { id: productId, title: "", price: NaN, count: count };
+      entry = {
+        id: productId,
+        title: title ?? "",
+        price: price ?? NaN,
+        count: count,
+      };
       cartInfo.products.push(entry);
     } else {
       if (entry.count + count > 0) {

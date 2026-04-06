@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { DetailsPageComponent } from "./components/details-page/details-page";
 import { ReviewSectionComponent } from "./components/review-section/review-section";
 import { ProductInfoSectionComponent } from "./components/product-info-section/product-info-section";
-import { CommonModule } from "@angular/common";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { SharedModule } from "../shared/shared-module";
 import { PlpPageComponent } from "./components/plp-page/plp-page";
 import { EditPageComponent } from "./components/edit-page/edit-page";
@@ -36,6 +36,12 @@ import { StockTextPipe } from "./pipes/stock-text-pipe";
     EditPageComponent,
     StockTextPipe,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule, SharedModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    SharedModule,
+    NgOptimizedImage,
+  ],
 })
 export class ProductModule {}

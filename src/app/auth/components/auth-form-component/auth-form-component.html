@@ -3,7 +3,10 @@
   <div class="auth-form__error-message">
     {{this.serverErrorMessage$ | async }}
   </div>
+  } @if (email.invalid && (email.dirty || email.touched)) {
+  <div class="auth-form__error-message">Email is incorrect or empty</div>
   }
+
   <label for="email">Email</label>
   <input
     type="email"
@@ -11,8 +14,11 @@
     required
     pattern="^\S+@\S+\.\S+$"
     id="email"
+    class="form-control"
     name="email"
+    #email="ngModel"
   />
+
   <label for="password">Password</label>
   <input
     type="password"
@@ -31,7 +37,18 @@
     required
     minlength="8"
     id="repeatPassword"
+    #repeatPassword="ngModel"
   />
+  @if (repeatPassword.invalid && (repeatPassword.dirty ||
+  repeatPassword.touched)) { @if (repeatPassword.hasError('required')){
+  <div class="auth-form__error-message">Password field is empty</div>
+  } @if (repeatPassword.hasError('passwordMatchInput')){
+  <div class="auth-form__error-message">Passwords don't match</div>
+  } @if (repeatPassword.hasError('minlength')){
+  <div class="auth-form__error-message">
+    Passwords must be 8 or more symbols
+  </div>
+  } }
   <input
     type="submit"
     (click)="createNewUser()"

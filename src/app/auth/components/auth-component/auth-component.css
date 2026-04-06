@@ -5,14 +5,14 @@
   gap: 20px;
 }
 
-.aa-auth-form-component__chooser {
+.auth-form-component__chooser {
   height: 60px;
   display: flex;
   justify-content: center;
   gap: 40px;
 }
 
-.aa-auth-component__chooser-variant {
+.auth-component__chooser-variant {
   font-size: 20px;
   font-weight: 700;
   color: #15151599;
@@ -20,11 +20,11 @@
   text-align: center;
   align-self: center;
 }
-.aa-auth-component__chooser-variant--active {
+.auth-component__chooser-variant--active {
   color: black;
   text-decoration: underline 2px;
 }
-.aa-auth-form-component__container {
+.auth-form-component__container {
   width: 100%;
   min-width: 250px;
   max-width: 500px;

@@ -16,10 +16,9 @@
       />
     </div>
     <div class="add-to-cart-button__section">
-      <aa-add-to-cart-button
-        [productId]="product?.id ?? 0"
-        [disabled]="(product?.stock ?? 0) < 1"
-      />
+      @if (product !== null) {
+        <aa-add-to-cart-button [productInfo]="product" [updateCounter]="true" />
+      }
       <div [aaStockColor]="product?.stock" class="product-info-section__stock">
         {{ product?.stock | stockText }}
       </div>

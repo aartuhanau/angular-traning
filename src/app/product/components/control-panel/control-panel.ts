@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { ProductInfo } from "src/app/shared/models/product-info";
 
 @Component({
   selector: "control-panel",
@@ -8,5 +9,5 @@ import { Component, Input } from "@angular/core";
 })
 export class ControlPanel {
   @Input({ required: true })
-  public id = 0;
+  public productInfo!: ProductInfo;
 }
