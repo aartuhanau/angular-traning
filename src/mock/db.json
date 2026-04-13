@@ -115,64 +115,46 @@
       "userId": 1,
       "products": [
         {
-          "id": 3,
-          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
-          "count": 1,
-          "price": 286
-        },
-        {
-          "id": 1,
-          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
-          "count": 5,
-          "price": 93.5
-        },
-        {
-          "id": 2,
+          "id": "2",
           "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
-          "count": 9,
-          "price": 287
-        },
-        {
-          "id": "1",
-          "title": "",
-          "price": null,
-          "count": 1
-        },
-        {
-          "id": "6",
-          "title": "",
-          "price": null,
+          "price": "287",
           "count": 2
         },
         {
-          "id": "4",
-          "title": "",
-          "price": null,
-          "count": 1
-        },
-        {
           "id": "5",
-          "title": "",
-          "price": null,
-          "count": 1
+          "title": "Alexandre.J The Collector Golden Oud Eau de Parfum, 100ml",
+          "price": 95,
+          "count": 4
         },
         {
-          "id": "7",
-          "title": "",
-          "price": null,
-          "count": 1
-        },
-        {
-          "id": "8",
-          "title": "",
-          "price": null,
-          "count": 1
+          "id": "6",
+          "title": "Parfums de Marly Herod Eau de Parfum, 125ml",
+          "price": 198,
+          "count": 4
         },
         {
           "id": "9",
-          "title": "",
-          "price": null,
-          "count": 1
+          "title": "Creed Bois Du Portugal Eau de Parfum, 100ml",
+          "price": 214.5,
+          "count": 5
+        },
+        {
+          "id": "7",
+          "title": "Aedes de Venustas Oeillet Bengale Eau de Parfum, 100ml",
+          "price": 154,
+          "count": 5
+        },
+        {
+          "id": "8",
+          "title": "Ajmal Silver Shade Eau de Parfum, 100ml",
+          "price": 20.9,
+          "count": 2
+        },
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "price": 286,
+          "count": 3
         }
       ]
     }

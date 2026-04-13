@@ -11,6 +11,7 @@
   <input
     type="email"
     [(ngModel)]="user.email"
+    (ngModelChange)="removeAuthenficationMessage()"
     required
     pattern="^\S+@\S+\.\S+$"
     id="email"
@@ -23,6 +24,7 @@
   <input
     type="password"
     [(ngModel)]="user.password"
+    (ngModelChange)="removeAuthenficationMessage()"
     required
     name="password"
     id="password"
@@ -40,6 +42,7 @@
     #repeatPassword="ngModel"
   />
   @if (repeatPassword.invalid && (repeatPassword.dirty ||
+  repeatPassword.touched) || repeatPassword.invalid && (repeatPassword.dirty ||
   repeatPassword.touched)) { @if (repeatPassword.hasError('required')){
   <div class="auth-form__error-message">Password field is empty</div>
   } @if (repeatPassword.hasError('passwordMatchInput')){

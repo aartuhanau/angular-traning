@@ -24,10 +24,12 @@ export class AddToCartButtonComponent implements OnInit, OnChanges {
   productInfo!: ProductInfo;
   @Input()
   count?: number;
+  @Input()
+  disabled: boolean = false;
 
   ngOnInit(): void {
     if (this.updateCounter) {
-      this._counter = this.cartService.getProductCount(this.productInfo.id);
+      this.cartService.getProductCount(this.productInfo.id).subscribe(entryCount => this._counter = entryCount);
     }
   }
 
@@ -38,7 +40,6 @@ export class AddToCartButtonComponent implements OnInit, OnChanges {
   }
 
   addToCart(): void {
-    this._counter = this.cartService.getProductCount(this.productInfo.id);
     this.increaseCounter();
   }
 
@@ -53,7 +54,11 @@ export class AddToCartButtonComponent implements OnInit, OnChanges {
   }
 
   decreaseCounter(): void {
-    this.cartService.addProduct(this.productInfo.id, -1);
+    if (this._counter - 1 === 0) {
+      this.cartService.removeProductFromCart(this.productInfo.id)
+    } else {
+      this.cartService.addProduct(this.productInfo.id, -1);
+    }
     this._counter--;
   }
 

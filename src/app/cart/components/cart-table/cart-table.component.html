@@ -35,6 +35,9 @@
     <div class="cart-table__empty">Cart is empty</div>
   }
 </table>
-<aa-cart-pagination
-  (paginationInfo)="updatePagination($event)"
-></aa-cart-pagination>
+
+@if (cart?.products?.length !== 0) {
+  <aa-cart-pagination
+    (paginationInfo)="updatePagination($event)"
+  ></aa-cart-pagination>
+}

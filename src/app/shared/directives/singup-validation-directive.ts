@@ -25,6 +25,7 @@ import {
 export class SignUpValidationDirective implements Validator {
   private el = inject(ElementRef);
   readonly passwordMatchInput = input<string>();
+
   validate(control: AbstractControl): ValidationErrors | null {
     if (control.value !== this.passwordMatchInput()) {
       return { passwordMatchInput: { value: control } };

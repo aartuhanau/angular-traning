@@ -1,25 +1,21 @@
 import { inject, Injectable } from "@angular/core";
 import { UserInfo } from "../../shared/models/user-info";
-import { RequestBuilderHelper } from "../../shared/services/request-builder-helper";
-import { backendConfig } from "../../shared/endpoints";
-import { HttpClient } from "@angular/common/http";
-import { Observable, tap } from "rxjs";
+import { BehaviorSubject, Observable, tap } from "rxjs";
+import { AuthServiceAdapter } from "./auth-service-adapter";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  private requestBuilderService: RequestBuilderHelper =
-    inject(RequestBuilderHelper);
-  private http: HttpClient = inject(HttpClient);
   private USER_TOKEN = "userToken";
   private USER_NAME = "userName";
+  private authServiceAdapter: AuthServiceAdapter = inject(AuthServiceAdapter);
+  serverErrorObject: BehaviorSubject<string | null> = new BehaviorSubject<
+    string | null
+  >(null);
 
   createUser(userInfo: UserInfo): Observable<UserInfo> {
-    let url = this.requestBuilderService.getTargetUrl(
-      backendConfig.backendUrls.createUser,
-    );
-    return this.http.post<UserInfo>(url, userInfo).pipe(
+    return this.authServiceAdapter.createUser(userInfo).pipe(
       tap((userInfo) => {
         if (userInfo?.id !== undefined) {
           localStorage.setItem(this.USER_TOKEN, userInfo?.id);
@@ -30,12 +26,7 @@ export class AuthService {
   }
 
   authUser(userInfo: UserInfo): Observable<UserInfo[]> {
-    let url = this.requestBuilderService.getTargetUrl(
-      backendConfig.backendUrls.authUser,
-    );
-    url = url.replace("{id}", userInfo.email);
-    url = url.replace("{password}", userInfo.password);
-    return this.http.get<UserInfo[]>(url).pipe(
+    return this.authServiceAdapter.authenticateUser(userInfo).pipe(
       tap((userInfo) => {
         if (userInfo.length == 1 && userInfo[0].id) {
           localStorage.setItem(this.USER_TOKEN, userInfo[0].id);
@@ -56,5 +47,13 @@ export class AuthService {
   logoutUser(): void {
     localStorage.removeItem(this.USER_TOKEN);
     localStorage.removeItem(this.USER_NAME);
+  }
+
+  updateAuthenticationMessage(message : string | null ){
+    this.serverErrorObject.next(message)
+  }
+
+  getAuthenticationMessage(): Observable<string | null>{
+    return this.serverErrorObject.asObservable()
   }
 }
