@@ -1,13 +1,19 @@
-import { Component } from "@angular/core";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { Component, inject } from "@angular/core";
 import { faSistrix } from "@fortawesome/free-brands-svg-icons";
+import { SearchState } from "src/app/shared/models/search-state";
 
 @Component({
-  selector: "search-bar",
-  imports: [FontAwesomeModule],
+  selector: "aa-search-bar",
+  standalone: false,
   templateUrl: "search-bar.component.html",
   styleUrl: "search-bar.css",
 })
-export class SearchBar {
+export class SearchBarComponent {
+  searchState = inject(SearchState);
   faSistrix = faSistrix;
+
+  updateSearchState(event: Event): void {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.searchState.updateValue(inputValue);
+  }
 }

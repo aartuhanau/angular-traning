@@ -1,0 +1,12 @@
+.details-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.details-page__product-info-section-container {
+  border-bottom: solid 1px black;
+}
+
+.details-page__review-section-container {
+}

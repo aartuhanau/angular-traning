@@ -5,19 +5,38 @@
 }
 
 body {
-  font-family: 'Be Vietnam Pro', sans-serif;
-}
-:root {
-  --primary-color: #605DC8;
-  --secondary-color: #8B89E6;
-  --accent-color: #e8e7fa;
-  --shadow-color: #E8E8E8;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
 
-button.primary {
-  padding: 10px;
-  border: solid 1px var(--primary-color);
-  background: var(--primary-color);
-  color: white;
-  border-radius: 8px;
+:root {
+  --primary-color: #e74c3c;
+}
+
+textarea,
+input[type="submit"],
+input[type="number"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"]:hover:disabled {
+  height: 40px;
+  background-color: white;
+  border: solid 2px black;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Be Vietnam Pro", sans-serif;
+  padding-left: 5px;
+}
+
+button {
+  height: 30px;
+  width: 60px;
+  background-color: white;
+  border: solid 2px black;
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: "Be Vietnam Pro", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,0 +1,67 @@
+<form class="auth-form__form" passwordMatchInput #authForm="ngForm">
+  @if( (this.serverErrorMessage$ | async) !== null){
+  <div class="auth-form__error-message">
+    {{this.serverErrorMessage$ | async }}
+  </div>
+  } @if (email.invalid && (email.dirty || email.touched)) {
+  <div class="auth-form__error-message">Email is incorrect or empty</div>
+  }
+
+  <label for="email">Email</label>
+  <input
+    type="email"
+    [(ngModel)]="user.email"
+    (ngModelChange)="removeAuthenficationMessage()"
+    required
+    pattern="^\S+@\S+\.\S+$"
+    id="email"
+    class="form-control"
+    name="email"
+    #email="ngModel"
+  />
+
+  <label for="password">Password</label>
+  <input
+    type="password"
+    [(ngModel)]="user.password"
+    (ngModelChange)="removeAuthenficationMessage()"
+    required
+    [minlength]="type === 'signup' ? 8 : null"
+    name="password"
+    id="password"
+    #password="ngModel"
+  />
+  @if (type === 'signup') { @if((password.dirty || password.touched )){ @if
+  (password.hasError('minlength')){
+  <div class="auth-form__error-message">
+    Passwords must be 8 or more symbols
+  </div>
+  } @if (password.hasError('required')){
+  <div class="auth-form__error-message">Password field is empty</div>
+  }}
+  <label for="repeatPassword">Repeat password</label>
+  <input
+    type="password"
+    [(ngModel)]="user.repeatPassword"
+    name="repeatPassword"
+    required
+    id="repeatPassword"
+    #repeatPassword="ngModel"
+  />
+  @if ((repeatPassword.invalid|| authForm.invalid) && (repeatPassword.dirty ||
+  repeatPassword.touched ) ) { @if (repeatPassword.hasError('required')){
+  <div class="auth-form__error-message">Repeat password is empty</div>
+  } @if (authForm.hasError('passwordMatchInput')){
+  <div class="auth-form__error-message">Passwords don't match</div>
+  } }
+  <input
+    type="submit"
+    (click)="createNewUser()"
+    [disabled]="authForm.form.invalid"
+    value="Register"
+  />
+  } @else {
+  <input type="submit" (click)="authUser()" value="Login" />
+
+  }
+</form>

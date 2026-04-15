@@ -1,0 +1,53 @@
+<div class="edit-form">
+  <div class="edit-form__right-section">
+    <form
+      class="edit-form__form"
+      (submit)="saveProduct()"
+      [formGroup]="productForm"
+    >
+      <label for="title">Title:</label>
+      <input
+        id="title"
+        class="form-control"
+        type="text"
+        formControlName="title"
+      />
+      @if (title?.invalid && (title?.dirty || title?.touched)) {
+        <div class="alert alert-danger">Please enter valid title</div>
+      }
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        type="textarea"
+        formControlName="description"
+      ></textarea>
+      @if (
+        description?.invalid && (description?.dirty || description?.touched)
+      ) {
+        <div class="alert alert-danger">Please enter valid description</div>
+      }
+      <label for="price">Price</label>
+      <input id="price" type="number" formControlName="price" />
+      @if (price?.invalid && (price?.dirty || price?.touched)) {
+        <div class="alert alert-danger">Please enter valid description</div>
+      }
+      <label for="image">Image url:</label>
+      <input id="image" type="text" formControlName="image" />
+      @if (image?.invalid) {
+        <div class="alert alert-danger">Please enter valid url image</div>
+      }
+      <label for="stock">Stock:</label>
+      <input id="stock" type="number" formControlName="stock" />
+      @if (stock?.invalid) {
+        <div class="alert alert-danger">Please enter valid stock</div>
+      }
+
+      <input type="submit" [disabled]="!productForm.valid" value="Submit" />
+    </form>
+  </div>
+  <div class="edit-form__left-section">
+    @if (!image?.invalid) {
+      <img [src]="image?.value" height="500px" width="500px" />
+    }
+  </div>
+</div>
