@@ -1,11 +1,12 @@
 import { inject, Injectable } from "@angular/core";
-import { ProductInfo } from "../models/product-info";
 import { BehaviorSubject, map, delay, Observable } from "rxjs";
-import { FacetHelper } from "./facet-helper";
+
 import { ParamMap } from "@angular/router";
 import { FormGroup } from "@angular/forms";
 import { HttpParams } from "@angular/common/http";
-import { ProductServiceAdapter } from "./product-service-adapter";
+import { FacetHelper } from "src/app/shared/helpers/facet-helper";
+import { ProductInfo } from "src/app/shared/models/product-info";
+import { ProductServiceAdapter } from "src/app/shared/services/product-service-adapter";
 
 @Injectable({
   providedIn: "root",
@@ -50,7 +51,7 @@ export class ProductService {
       .subscribe(() => this.getProducts(paramMap, 1000));
   }
 
-  getProduct(id : string) : Observable<ProductInfo>{
+  getProduct(id: string): Observable<ProductInfo> {
     return this.productServiceAdapter.getProduct(id);
   }
 

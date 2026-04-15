@@ -1,10 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  forwardRef,
-  inject,
-  input,
-} from "@angular/core";
+import { Directive, forwardRef } from "@angular/core";
 import {
   AbstractControl,
   NG_VALIDATORS,
@@ -23,11 +17,11 @@ import {
   standalone: false,
 })
 export class SignUpValidationDirective implements Validator {
-  private el = inject(ElementRef);
-  readonly passwordMatchInput = input<string>();
-
   validate(control: AbstractControl): ValidationErrors | null {
-    if (control.value !== this.passwordMatchInput()) {
+    if (
+      control.get("repeatPassword") !== undefined &&
+      control.get("password")?.value !== control.get("repeatPassword")?.value
+    ) {
       return { passwordMatchInput: { value: control } };
     }
     return null;

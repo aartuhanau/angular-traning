@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ProductInfo } from "src/app/shared/models/product-info";
-import { ProductService } from "src/app/shared/services/product-service";
 import { Observable, switchMap } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
+import { ProductService } from "../../services/product-service";
 
 @Component({
   selector: "aa-product-listing",

@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ReviewInfo } from "../models/review-info";
-import { RequestBuilderHelper } from "./request-builder-helper";
+import { RequestBuilderHelper } from "../helpers/request-builder-helper";
 import { backendConfig } from "../endpoints";
 
 @Injectable({

@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { backendConfig } from "src/app/shared/endpoints";
 import { UserInfo } from "src/app/shared/models/user-info";
-import { RequestBuilderHelper } from "src/app/shared/services/request-builder-helper";
+import { RequestBuilderHelper } from "src/app/shared/helpers/request-builder-helper";
 
 @Injectable({
   providedIn: "root",

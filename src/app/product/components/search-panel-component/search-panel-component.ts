@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FacetInfo } from "src/app/shared/models/facet-info";
-import { FacetHelper } from "src/app/shared/services/facet-helper";
+import { FacetHelper } from "src/app/shared/helpers/facet-helper";
 import { map, Observable } from "rxjs";
 
 @Component({

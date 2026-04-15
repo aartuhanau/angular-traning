@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProductInfo } from "src/app/shared/models/product-info";
-import { ProductService } from "src/app/shared/services/product-service";
+import { ProductService } from "../../services/product-service";
 
 @Component({
   selector: "aa-edit-form",

@@ -1,4 +1,4 @@
-<form class="auth-form__form" #authForm="ngForm">
+<form class="auth-form__form" passwordMatchInput #authForm="ngForm">
   @if( (this.serverErrorMessage$ | async) !== null){
   <div class="auth-form__error-message">
     {{this.serverErrorMessage$ | async }}
@@ -26,31 +26,33 @@
     [(ngModel)]="user.password"
     (ngModelChange)="removeAuthenficationMessage()"
     required
+    [minlength]="type === 'signup' ? 8 : null"
     name="password"
     id="password"
+    #password="ngModel"
   />
-  @if (type === 'signup') {
+  @if (type === 'signup') { @if((password.dirty || password.touched )){ @if
+  (password.hasError('minlength')){
+  <div class="auth-form__error-message">
+    Passwords must be 8 or more symbols
+  </div>
+  } @if (password.hasError('required')){
+  <div class="auth-form__error-message">Password field is empty</div>
+  }}
   <label for="repeatPassword">Repeat password</label>
   <input
-    [passwordMatchInput]="user.password"
     type="password"
     [(ngModel)]="user.repeatPassword"
     name="repeatPassword"
     required
-    minlength="8"
     id="repeatPassword"
     #repeatPassword="ngModel"
   />
-  @if (repeatPassword.invalid && (repeatPassword.dirty ||
-  repeatPassword.touched) || repeatPassword.invalid && (repeatPassword.dirty ||
-  repeatPassword.touched)) { @if (repeatPassword.hasError('required')){
-  <div class="auth-form__error-message">Password field is empty</div>
-  } @if (repeatPassword.hasError('passwordMatchInput')){
+  @if ((repeatPassword.invalid|| authForm.invalid) && (repeatPassword.dirty ||
+  repeatPassword.touched ) ) { @if (repeatPassword.hasError('required')){
+  <div class="auth-form__error-message">Repeat password is empty</div>
+  } @if (authForm.hasError('passwordMatchInput')){
   <div class="auth-form__error-message">Passwords don't match</div>
-  } @if (repeatPassword.hasError('minlength')){
-  <div class="auth-form__error-message">
-    Passwords must be 8 or more symbols
-  </div>
   } }
   <input
     type="submit"

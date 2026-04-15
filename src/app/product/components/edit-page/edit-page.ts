@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { ProductService } from "src/app/shared/services/product-service";
 import { ActivatedRoute } from "@angular/router";
 import { ProductInfo } from "src/app/shared/models/product-info";
 import { Observable } from "rxjs";
+import { ProductService } from "../../services/product-service";
 
 @Component({
   selector: "edit-page",

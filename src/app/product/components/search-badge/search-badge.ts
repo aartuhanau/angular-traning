@@ -2,7 +2,7 @@ import { Component, inject, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FacetInfo } from "src/app/shared/models/facet-info";
-import { MapFacetHelper } from "src/app/shared/services/mapper-helper";
+import { MapFacetHelper } from "src/app/shared/helpers/mapper-helper";
 
 @Component({
   selector: "aa-search-badge",

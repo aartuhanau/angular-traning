@@ -1,7 +1,7 @@
 import { Component, inject, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { ProductInfo } from "src/app/shared/models/product-info";
-import { ProductService } from "src/app/shared/services/product-service";
+import { ProductService } from "../../services/product-service";
 
 @Component({
   selector: "aa-product-info-section",

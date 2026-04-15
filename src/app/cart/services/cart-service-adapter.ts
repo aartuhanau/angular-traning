@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { backendConfig } from "src/app/shared/endpoints";
 import { CartInfo } from "src/app/shared/models/cart-info";
-import { RequestBuilderHelper } from "src/app/shared/services/request-builder-helper";
+import { RequestBuilderHelper } from "src/app/shared/helpers/request-builder-helper";
 
 @Injectable({
   providedIn: "root",
@@ -21,7 +21,7 @@ export class CartServiceAdapter {
     return this.http.get<CartInfo>(url);
   }
 
-  updateCart(cartInfo: CartInfo) : Observable<Object> {
+  updateCart(cartInfo: CartInfo): Observable<Object> {
     let url = this.requestBuilderService.getTargetUrl(
       backendConfig.backendUrls.updateCart,
     );

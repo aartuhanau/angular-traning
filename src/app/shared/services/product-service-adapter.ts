@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { RequestBuilderHelper } from "./request-builder-helper";
+import { RequestBuilderHelper } from "../helpers/request-builder-helper";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { backendConfig } from "../endpoints";
 import { ProductInfo } from "../models/product-info";

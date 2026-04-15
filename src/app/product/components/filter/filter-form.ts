@@ -2,9 +2,9 @@ import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BehaviorSubject, Observable, switchMap } from "rxjs";
-import { FacetHelper } from "src/app/shared/services/facet-helper";
-import { MapFacetHelper } from "src/app/shared/services/mapper-helper";
-import { ProductService } from "src/app/shared/services/product-service";
+import { FacetHelper } from "src/app/shared/helpers/facet-helper";
+import { MapFacetHelper } from "src/app/shared/helpers/mapper-helper";
+import { ProductService } from "../../services/product-service";
 
 @Component({
   selector: "aa-filter-form",
