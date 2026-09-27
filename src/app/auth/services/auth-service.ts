@@ -1,8 +1,9 @@
 import { inject, Injectable } from "@angular/core";
 import { UserInfo } from "../../shared/models/user-info";
-import { BehaviorSubject, map, Observable, tap } from "rxjs";
+import { BehaviorSubject, map, Observable } from "rxjs";
 import { AuthServiceAdapter } from "./auth-service-adapter";
-import { selectUserState } from "src/app/store/auth.state";
+import { selectIsAuthenticated } from "src/app/store/auth.state";
+import { authActions } from "src/app/store/actions/auth.actions";
 import { Store } from "@ngrx/store";
 
 @Injectable({
@@ -10,29 +11,50 @@ import { Store } from "@ngrx/store";
 })
 export class AuthService {
   private store = inject(Store);
-  private userInfo = this.store.selectSignal(selectUserState);
+  private readonly userTokenKey = "userToken";
+  private readonly userNameKey = "userName";
+  private isAuthenticatedSignal = this.store.selectSignal(selectIsAuthenticated);
   private authServiceAdapter: AuthServiceAdapter = inject(AuthServiceAdapter);
   serverErrorObject: BehaviorSubject<string | null> = new BehaviorSubject<
     string | null
   >(null);
 
   createUser(userInfo: UserInfo): Observable<UserInfo> {
-    return this.authServiceAdapter.createUser(userInfo);
+    return this.authServiceAdapter.createUser(userInfo).pipe(
+      map((userInfo) => {
+        if (userInfo?.id !== undefined) {
+          localStorage.setItem(this.userTokenKey, userInfo.id);
+          localStorage.setItem(this.userNameKey, userInfo.email);
+        }
+
+        return userInfo;
+      }),
+    );
   }
 
   authUser(userInfo: UserInfo): Observable<UserInfo> {
     return this.authServiceAdapter
       .authenticateUser(userInfo)
-      .pipe(map((userInfo) => userInfo[0]));
+      .pipe(
+        map((userInfo) => {
+          if (userInfo[0]?.id !== undefined) {
+            localStorage.setItem(this.userTokenKey, userInfo[0].id);
+            localStorage.setItem(this.userNameKey, userInfo[0].email);
+          }
+
+          return userInfo[0];
+        }),
+      );
   }
 
   isAuthenticated(): boolean {
-    const user = this.userInfo();
-    return !!user && !!user.id && user.id !== "";
+    return this.isAuthenticatedSignal();
   }
 
   logoutUser(): void {
-    this.store.dispatch({ type: "[Auth API] authLogoutUser" });
+    localStorage.removeItem(this.userTokenKey);
+    localStorage.removeItem(this.userNameKey);
+    this.store.dispatch(authActions.authLogoutUser());
   }
 
   updateAuthenticationMessage(message: string | null) {

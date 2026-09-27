@@ -16,7 +16,15 @@ export class AuthEffects {
       ofType(authActions.authUser),
       switchMap((action) =>
         this.authService.authUser(action.userInfo).pipe(
-          map((userInfo) => authActions.authUserSuccess({ userInfo })),
+          map((userInfo) => {
+            if (userInfo === undefined) {
+              return authActions.authUserFailure({
+                error: "Incorrect login attempt",
+              });
+            }
+
+            return authActions.authUserSuccess({ userInfo });
+          }),
           catchError((err) =>
             of(authActions.authUserFailure({ error: "Failed" })),
           ),
@@ -40,7 +48,33 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(authActions.authUserSuccess),
-        tap(() => this.router.navigate([""])),
+        tap(() => {
+          this.authService.updateAuthenticationMessage(null);
+          this.router.navigate([""]);
+        }),
+      ),
+    { dispatch: false },
+  );
+
+  updateMessageOnFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(authActions.authUserFailure),
+        tap(({ error }) => this.authService.updateAuthenticationMessage(error)),
+      ),
+    { dispatch: false },
+  );
+
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(authActions.authLogoutUser),
+        tap(() => {
+          localStorage.removeItem("userToken");
+          localStorage.removeItem("userName");
+          this.authService.updateAuthenticationMessage(null);
+          this.router.navigate([""]);
+        }),
       ),
     { dispatch: false },
   );

@@ -24,12 +24,12 @@ export class AuthFormComponent {
   createNewUser(): void {
     this.store.dispatch({
       type: "[Auth API] authCreateUser",
-      userInfo: this.user,
+      userInfo:  { ...this.user },
     });
   }
 
   authUser(): void {
-    this.store.dispatch({ type: "[Auth API] authUser", userInfo: this.user });
+    this.store.dispatch({ type: "[Auth API] authUser", userInfo: { ...this.user } });
   }
 
   removeAuthenficationMessage(): void {
