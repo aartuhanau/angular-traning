@@ -1,0 +1,19 @@
+<div class="cart-pagination">
+  @for (page of pages | async; track $index) {
+    @if (page === currentPage) {
+      <div
+        class="cart-pagination__page-number cart-pagination__page-number--active"
+      >
+        {{ page }}
+      </div>
+    }
+    @if (page != currentPage) {
+      <div
+        (click)="updatePagination(page)"
+        class="cart-pagination__page-number"
+      >
+        {{ page }}
+      </div>
+    }
+  }
+</div>

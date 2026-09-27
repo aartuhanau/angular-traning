@@ -1,5 +1,13 @@
 export const backendConfig = {
   backendUrls: {
     getProducts: "/products",
+    deleteProduct: "/products/{id}",
+    patchProduct: "/products/{id}",
+    getReviews: "/reviews/",
+    getProduct: "/products/{id}",
+    getCart: "/cart/{id}",
+    updateCart: "/cart/{id}",
+    createUser: "/users/",
+    authUser: "/users/?email={id}&password={password}",
   },
 };

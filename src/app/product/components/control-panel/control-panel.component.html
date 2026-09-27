@@ -1,0 +1,13 @@
+<div class="control-panel">
+  <div class="control-panel__cart">
+    <aa-add-to-cart-button [updateCounter]="true" [productInfo]="productInfo" />
+  </div>
+  <div class="control-panel__edit-section">
+    <div class="control-panel__edit">
+      <aa-edit-button [productId]="productInfo.id" />
+    </div>
+    <div class="control-panel__delete">
+      <aa-delete-button [productId]="productInfo.id" />
+    </div>
+  </div>
+</div>

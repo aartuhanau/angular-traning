@@ -1,0 +1,21 @@
+<div class="auth-component">
+  <div class="auth-form-component__chooser">
+    <div
+      class="auth-component__login auth-component__chooser-variant"
+      [class.auth-component__chooser-variant--active]="type==='singin'"
+      (click)="changeType('singin')"
+    >
+      Login
+    </div>
+    <div
+      class="auth-component__signup auth-component__chooser-variant"
+      [class.auth-component__chooser-variant--active]="type==='signup'"
+      (click)="changeType('signup')"
+    >
+      Register
+    </div>
+  </div>
+  <div class="auth-form-component__container">
+    <aa-auth-form-component [type]="type" />
+  </div>
+</div>

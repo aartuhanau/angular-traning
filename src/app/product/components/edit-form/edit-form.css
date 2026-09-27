@@ -1,0 +1,46 @@
+.edit-form {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.edit-form__right-section {
+  width: 500px;
+}
+
+.edit-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input.ng-invalid {
+  border-color: red;
+}
+
+.alert-danger {
+  background-color: red;
+}
+
+textarea {
+  height: 200px;
+}
+
+input[type="submit"]:hover {
+  border: solid 2px var(--primary-color);
+}
+
+input[type="submit"]:disabled,
+input[type="submit"]:disabled:hover {
+  background-color: gainsboro;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

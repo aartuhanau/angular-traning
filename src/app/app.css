@@ -10,4 +10,10 @@ header {
 }
 .content {
   padding: var(--content-padding);
+  width: 1200px;
+  margin: 0 auto;
+}
+
+button {
+  all: unset;
 }

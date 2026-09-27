@@ -3,7 +3,7 @@
 }
 
 .search-bar-input {
-  border: solid 1px #e74c3c;
+  border: solid 1px var(--primary-color);
   border-radius: 2rem;
   height: 40px;
   padding-left: 40px;

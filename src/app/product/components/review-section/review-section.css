@@ -1,0 +1,30 @@
+.review-section {
+  width: 90%;
+  margin: 0 auto;
+}
+.review-section__title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.review__right-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.review__user-icon-image {
+  border-radius: 50%;
+  border: solid black;
+}
+
+.review__first-row {
+  display: flex;
+  gap: 20px;
+}

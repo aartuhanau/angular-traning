@@ -1,0 +1,32 @@
+.product-listing-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 20px;
+}
+
+.product-listing-item:hover {
+  border: 2px solid var(--primary-color);
+}
+
+.product-listing-item__price-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-listing-item__image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.product-listing-item__title {
+  height: 60px;
+}
+
+.product-listing-item__image {
+  height: 208px;
+  width: 208px;
+  align-items: center;
+}

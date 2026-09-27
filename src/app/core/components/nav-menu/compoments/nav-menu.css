@@ -7,7 +7,7 @@
 }
 
 .nav-node:hover {
-  text-decoration: underline 2px #e74c3c;
+  text-decoration: underline 2px var(--primary-color);
 }
 
 a {

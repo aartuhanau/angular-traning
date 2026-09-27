@@ -1,0 +1,32 @@
+.auth-component {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-form-component__chooser {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.auth-component__chooser-variant {
+  font-size: 20px;
+  font-weight: 700;
+  color: #15151599;
+  width: 100px;
+  text-align: center;
+  align-self: center;
+}
+.auth-component__chooser-variant--active {
+  color: black;
+  text-decoration: underline 2px;
+}
+.auth-form-component__container {
+  width: 100%;
+  min-width: 250px;
+  max-width: 500px;
+  margin: 0 auto;
+}

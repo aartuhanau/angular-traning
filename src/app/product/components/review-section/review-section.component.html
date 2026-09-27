@@ -1,0 +1,29 @@
+<div class="review-section">
+  <div class="review-section__title">Customer reviews:</div>
+  @if ((reviews$ | async)?.length == 0) {
+    No reviews yet
+  } @else {
+    @for (review of reviews$ | async; track $index) {
+      <div class="review">
+        <div class="review__first-row">
+          <div class="review__user-icon">
+            <img
+              class="review__user-icon-image"
+              ngSrc="/public/default-icon.jpg"
+              alt="default customer icon"
+              height="36"
+              width="36"
+            />
+          </div>
+          <div class="review__right-section">
+            <div class="review__customer-name">John Doe</div>
+            <div class="review__rate">
+              <aa-star-rating [rating]="{ count: 1, rate: review.rate }" />
+            </div>
+          </div>
+        </div>
+        <div class="review__text">{{ review.text }}</div>
+      </div>
+    }
+  }
+</div>

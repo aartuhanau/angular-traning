@@ -1,0 +1,9 @@
+@if (rating != null && rating.count > 0) {
+  {{ rating.rate }}
+  <fa-icon class="search-bar-icon" [icon]="faStar" />
+  @if (isReviewVisible) {
+    ({{ rating.count }} reviews)
+  }
+} @else {
+  No reviews yet
+}
