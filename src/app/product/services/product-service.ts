@@ -45,10 +45,10 @@ export class ProductService {
       .pipe(map((result) => result.length));
   }
 
-  deleteProduct(id: number, paramMap: ParamMap): void {
-    this.productServiceAdapter
+  deleteProduct(id: number, paramMap: ParamMap): Observable<ParamMap> {
+    return this.productServiceAdapter
       .deleteProduct(id)
-      .subscribe(() => this.getProducts(paramMap, 1000));
+      .pipe(map(() => paramMap));
   }
 
   getProduct(id: string): Observable<ProductInfo> {

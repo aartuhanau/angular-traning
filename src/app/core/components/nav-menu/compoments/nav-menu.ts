@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, computed, inject, OnInit } from "@angular/core";
 import { map, Observable } from "rxjs";
 import { AuthService } from "src/app/auth/services/auth-service";
 import { CartService } from "src/app/cart/services/cart-service";
@@ -12,6 +12,7 @@ import { CartService } from "src/app/cart/services/cart-service";
 export class NavMenuComponent implements OnInit {
   private cartService: CartService = inject(CartService);
   private authService: AuthService = inject(AuthService);
+  isAnonymous = computed(() => !this.authService.isAuthenticated());
   cartId$!: Observable<string>;
 
   ngOnInit(): void {
@@ -19,10 +20,6 @@ export class NavMenuComponent implements OnInit {
     this.cartId$ = this.cartService
       .getCurrentCart()
       .pipe(map((cart) => cart.id));
-  }
-
-  isAnonymous(): boolean {
-    return !this.authService.isAuthenticated();
   }
 
   logout(): void {

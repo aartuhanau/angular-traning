@@ -1,8 +1,10 @@
 import { Component, inject, OnInit } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ProductInfo } from "src/app/shared/models/product-info";
-import { Observable, switchMap } from "rxjs";
+import { Observable, switchMap, takeUntil, tap } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
-import { ProductService } from "../../services/product-service";
+import { Store } from "@ngrx/store";
+import { selectAllProducts } from "src/app/store/plp.state";
 
 @Component({
   selector: "aa-product-listing",
@@ -11,15 +13,21 @@ import { ProductService } from "../../services/product-service";
   styleUrl: "product-listing.css",
 })
 export class ProductListingComponent implements OnInit {
-  private productService: ProductService = inject(ProductService);
   private route: ActivatedRoute = inject(ActivatedRoute);
-  productInfoList$!: Observable<ProductInfo[]>;
+  private store = inject(Store);
+  productInfoList$: Observable<ProductInfo[]> =
+    this.store.select(selectAllProducts);
 
   ngOnInit(): void {
-    this.productInfoList$ = this.route.queryParamMap.pipe(
-      switchMap((queryMap) => {
-        return this.productService.getProducts(queryMap);
-      }),
-    );
+    this.route.queryParamMap
+      .pipe(
+        tap((params) =>
+          this.store.dispatch({
+            type: "[Products API] LoadProducts",
+            queryMap: params,
+          }),
+        ),
+      )
+      .subscribe();
   }
 }
