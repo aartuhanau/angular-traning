@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ProductInfo } from "src/app/shared/models/product-info";
-import { Observable, switchMap, takeUntil, tap } from "rxjs";
+import { Observable, tap } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { selectAllProducts } from "src/app/store/plp.state";

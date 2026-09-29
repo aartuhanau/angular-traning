@@ -5,7 +5,6 @@ import { DeleteButtonComponent } from "./components/delete-button/delete-button"
 import { StarRatingComponent } from "./components/star-rating/star-rating";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { routes } from "../app.routes";
 import { EditButtonComponent } from "./components/edit-button/edit-button";
 import { SearchPipe } from "./pipes/search-pipe";
 import { StockColorDirective } from "./directives/stock-color-directive";
