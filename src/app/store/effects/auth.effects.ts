@@ -70,9 +70,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(authActions.authLogoutUser),
         tap(() => {
-          localStorage.removeItem("userToken");
-          localStorage.removeItem("userName");
-          this.authService.updateAuthenticationMessage(null);
+          this.authService.logoutUser();
           this.router.navigate([""]);
         }),
       ),

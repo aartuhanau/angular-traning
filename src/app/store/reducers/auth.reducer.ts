@@ -3,17 +3,34 @@ import { createReducer, on } from "@ngrx/store";
 import { authActions } from "../actions/auth.actions";
 import { UserInfo } from "src/app/shared/models/user-info";
 
+const USER_TOKEN_COOKIE_KEY = "userToken";
+const USER_NAME_COOKIE_KEY = "userName";
+
 export interface AuthState extends EntityState<UserInfo> {
   userInfo: UserInfo;
 }
 
-const USER_TOKEN_KEY = "userToken";
-const USER_NAME_KEY = "userName";
+function getCookieValue(name: string): string | null {
+  if (typeof document === "undefined") {
+    return null;
+  }
+
+  for (const part of document.cookie.split(";")) {
+    const [key, ...rest] = part.trim().split("=");
+    if (key === name) {
+      return decodeURIComponent(rest.join("="));
+    }
+  }
+
+  return null;
+}
 
 function getInitialUserInfo(): UserInfo {
-  const token = localStorage.getItem(USER_TOKEN_KEY) ?? "";
-  const userName = localStorage.getItem(USER_NAME_KEY) ?? "";
-  return { id: token, email: userName, password: "" };
+  return {
+    id: getCookieValue(USER_TOKEN_COOKIE_KEY) ?? "",
+    email: getCookieValue(USER_NAME_COOKIE_KEY) ?? "",
+    password: "",
+  };
 }
 
 const initialState: AuthState = {

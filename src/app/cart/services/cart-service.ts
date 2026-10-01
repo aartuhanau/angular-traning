@@ -4,12 +4,17 @@ import { BehaviorSubject, map, Observable } from "rxjs";
 import { CartInfo } from "src/app/shared/models/cart-info";
 import { CartEntryInfo } from "src/app/shared/models/cart-entry";
 import { CartServiceAdapter } from "./cart-service-adapter";
+import { CookieService } from "src/app/auth/services/cookie-service";
+
+const SESSION_CART_COOKIE_KEY = "sessionCart";
+const DEFAULT_CART_ID = "1";
 
 @Injectable({
   providedIn: "root",
 })
 export class CartService {
   private cartServiceAdapter: CartServiceAdapter = inject(CartServiceAdapter);
+  private cookieService = inject(CookieService);
   private cartInfoSubject: BehaviorSubject<CartInfo> =
     new BehaviorSubject<CartInfo>({ id: "", products: [], userId: "" });
   cartInfo$: Observable<CartInfo> = this.cartInfoSubject.asObservable();
@@ -25,11 +30,13 @@ export class CartService {
   }
 
   getCurrentCartId(): string | null {
-    let sessionCart = localStorage.getItem("sessionCart");
+    const sessionCart = this.cookieService.get(SESSION_CART_COOKIE_KEY);
+
     if (sessionCart === null) {
-      localStorage.setItem("sessionCart", "1");
+      this.cookieService.set(SESSION_CART_COOKIE_KEY, DEFAULT_CART_ID);
     }
-    return sessionCart ?? "1";
+
+    return sessionCart ?? DEFAULT_CART_ID;
   }
 
   removeProductFromCart(productId: number) {

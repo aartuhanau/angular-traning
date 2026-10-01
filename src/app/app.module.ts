@@ -1,7 +1,6 @@
-import {BrowserModule, platformBrowser, provideClientHydration, withEventReplay} from "@angular/platform-browser";
+import {BrowserModule, provideClientHydration, withEventReplay} from "@angular/platform-browser";
 import {App} from "./app";
 import {NgModule} from "@angular/core";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {authReducer} from "./store/reducers/auth.reducer";
 import {productReducer} from "./store/reducers/plp.reducer";
 import {StoreModule} from "@ngrx/store";
@@ -30,12 +29,6 @@ import {CoreModule} from "./core/core-module";
         CartModule,
         EffectsModule.forRoot([ProductsEffects, AuthEffects]),
         StoreModule.forRoot({products: productReducer, auth: authReducer}),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25, // Retains last 25 states
-            logOnly: false,
-            trace: true, // Restrict extension to log-only mode in production
-            autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-        }),
     ],
     providers: [
       provideClientHydration(withEventReplay())

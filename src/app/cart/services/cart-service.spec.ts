@@ -7,6 +7,11 @@ import { CartInfo } from "src/app/shared/models/cart-info";
 describe("CartService", () => {
   let service: CartService;
   let adapterSpy: jasmine.SpyObj<CartServiceAdapter>;
+  const sessionCartCookie = "sessionCart";
+
+  const clearCookie = (name: string) => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+  };
 
   const buildCart = (overrides: Partial<CartInfo> = {}): CartInfo => ({
     id: "1",
@@ -16,12 +21,12 @@ describe("CartService", () => {
   });
 
   beforeEach(() => {
-    localStorage.clear();
+    clearCookie(sessionCartCookie);
 
-    adapterSpy = jasmine.createSpyObj<CartServiceAdapter>("CartServiceAdapter", [
-      "getCart",
-      "updateCart",
-    ]);
+    adapterSpy = jasmine.createSpyObj<CartServiceAdapter>(
+      "CartServiceAdapter",
+      ["getCart", "updateCart"],
+    );
     adapterSpy.getCart.and.returnValue(of(buildCart()));
     adapterSpy.updateCart.and.returnValue(of({}));
 
@@ -36,27 +41,26 @@ describe("CartService", () => {
   });
 
   afterEach(() => {
-    localStorage.clear();
+    clearCookie(sessionCartCookie);
   });
 
-
   describe("getCurrentCartId", () => {
-    it("initializes sessionCart in localStorage when missing", () => {
-      expect(localStorage.getItem("sessionCart")).toBeNull();
+    it("initializes sessionCart in cookies when missing", () => {
+      expect(document.cookie).not.toContain(`${sessionCartCookie}=`);
 
       const cartId = service.getCurrentCartId();
 
       expect(cartId).toBe("1");
-      expect(localStorage.getItem("sessionCart")).toBe("1");
+      expect(document.cookie).toContain(`${sessionCartCookie}=1`);
     });
 
     it("returns the existing sessionCart value without overwriting it", () => {
-      localStorage.setItem("sessionCart", "42");
+      document.cookie = `${sessionCartCookie}=42; path=/`;
 
       const cartId = service.getCurrentCartId();
 
       expect(cartId).toBe("42");
-      expect(localStorage.getItem("sessionCart")).toBe("42");
+      expect(document.cookie).toContain(`${sessionCartCookie}=42`);
     });
   });
 
@@ -64,7 +68,7 @@ describe("CartService", () => {
     it("fetches the cart for the current cart id and publishes it", () => {
       const cart = buildCart({ id: "42", products: [] });
       adapterSpy.getCart.and.returnValue(of(cart));
-      localStorage.setItem("sessionCart", "42");
+      document.cookie = `${sessionCartCookie}=42; path=/`;
 
       service.loadCart();
 

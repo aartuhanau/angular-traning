@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { Router } from "@angular/router";
 import { provideMockActions } from "@ngrx/effects/testing";
-import { Observable, of, Subject, throwError } from "rxjs";
+import { Observable, of, throwError } from "rxjs";
 import { AuthEffects } from "./auth.effects";
 import { authActions } from "../actions/auth.actions";
 import { AuthService } from "src/app/auth/services/auth-service";
@@ -19,6 +19,7 @@ describe("AuthEffects", () => {
     authServiceSpy = jasmine.createSpyObj("AuthService", [
       "authUser",
       "createUser",
+      "logoutUser",
       "updateAuthenticationMessage",
     ]);
     routerSpy = jasmine.createSpyObj("Router", ["navigate"]);
@@ -47,7 +48,9 @@ describe("AuthEffects", () => {
     });
 
     it("dispatches authUserFailure when the service resolves no user", (done) => {
-      authServiceSpy.authUser.and.returnValue(of(undefined as unknown as UserInfo));
+      authServiceSpy.authUser.and.returnValue(
+        of(undefined as unknown as UserInfo),
+      );
       actions$ = of(authActions.authUser({ userInfo }));
 
       effects.authUser$.subscribe((action) => {
@@ -65,7 +68,9 @@ describe("AuthEffects", () => {
       actions$ = of(authActions.authUser({ userInfo }));
 
       effects.authUser$.subscribe((action) => {
-        expect(action).toEqual(authActions.authUserFailure({ error: "Failed" }));
+        expect(action).toEqual(
+          authActions.authUserFailure({ error: "Failed" }),
+        );
         done();
       });
     });
@@ -99,7 +104,9 @@ describe("AuthEffects", () => {
 
   describe("updateMessageOnFailure$", () => {
     it("forwards the failure error to the auth message", (done) => {
-      actions$ = of(authActions.authUserFailure({ error: "Incorrect login attempt" }));
+      actions$ = of(
+        authActions.authUserFailure({ error: "Incorrect login attempt" }),
+      );
 
       effects.updateMessageOnFailure$.subscribe(() => {
         expect(authServiceSpy.updateAuthenticationMessage).toHaveBeenCalledWith(
@@ -111,17 +118,11 @@ describe("AuthEffects", () => {
   });
 
   describe("logout$", () => {
-    it("clears storage, resets the message, and navigates home on authLogoutUser", (done) => {
-      localStorage.setItem("userToken", "1");
-      localStorage.setItem("userName", "user@example.com");
+    it("clears auth cookies through the service and navigates home on authLogoutUser", (done) => {
       actions$ = of(authActions.authLogoutUser());
 
       effects.logout$.subscribe(() => {
-        expect(localStorage.getItem("userToken")).toBeNull();
-        expect(localStorage.getItem("userName")).toBeNull();
-        expect(authServiceSpy.updateAuthenticationMessage).toHaveBeenCalledWith(
-          null,
-        );
+        expect(authServiceSpy.logoutUser).toHaveBeenCalled();
         expect(routerSpy.navigate).toHaveBeenCalledWith([""]);
         done();
       });
