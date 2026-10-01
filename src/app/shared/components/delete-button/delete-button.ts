@@ -1,7 +1,7 @@
 import { Component, inject, Input } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
-import { ProductService } from "src/app/product/services/product-service";
+import { Store } from "@ngrx/store";
 
 @Component({
   standalone: false,
@@ -10,15 +10,17 @@ import { ProductService } from "src/app/product/services/product-service";
   styleUrl: "./delete-button.css",
 })
 export class DeleteButtonComponent {
-  private productService: ProductService = inject(ProductService);
-  private route: ActivatedRoute = inject(ActivatedRoute);
+  private route = inject(ActivatedRoute);
+  private store = inject(Store);
+
   @Input({ required: true })
   productId = 0;
 
   deleteProduct(): void {
-    this.productService.deleteProduct(
-      this.productId,
-      this.route.snapshot.queryParamMap,
-    );
+    this.store.dispatch({
+      type: "[Products API] delete product",
+      productId: this.productId,
+      queryMap: this.route.snapshot.queryParamMap,
+    });
   }
 }

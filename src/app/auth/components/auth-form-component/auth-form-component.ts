@@ -1,8 +1,8 @@
 import { Component, inject, Input } from "@angular/core";
 import { UserInfo } from "src/app/shared/models/user-info";
 import { AuthService } from "src/app/auth/services/auth-service";
-import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { Store } from "@ngrx/store";
 
 @Component({
   selector: "aa-auth-form-component",
@@ -12,40 +12,27 @@ import { Observable } from "rxjs";
 })
 export class AuthFormComponent {
   private authService: AuthService = inject(AuthService);
-  private router: Router = inject(Router);
+  private store: Store = inject(Store);
   @Input()
   type: "signup" | "singin" = "singin";
- 
-  serverErrorMessage$: Observable<string | null> =  this.authService.getAuthenticationMessage()
+
+  serverErrorMessage$: Observable<string | null> =
+    this.authService.getAuthenticationMessage();
 
   user = new UserInfo("", "");
 
   createNewUser(): void {
-    this.authService.createUser(this.user).subscribe((userInfo) => {
-      if (this.authService.isAuthenticated()) {
-        this.router.navigate([""]);
-      } else {
-        this.authService.updateAuthenticationMessage("User is not created. Server error");
-      }
+    this.store.dispatch({
+      type: "[Auth API] authCreateUser",
+      userInfo:  { ...this.user },
     });
   }
 
   authUser(): void {
-    this.authService.authUser(this.user).subscribe({
-      next: (user) => {
-        if (user === null || (Array.isArray(user) && user.length === 0)) {
-          this.authService.updateAuthenticationMessage("Incorrect email or password");
-        } else {
-          this.router.navigate([""]);
-        }
-      },
-      error: (error) => {
-         this.authService.updateAuthenticationMessage("Incorrect email or password");
-      },
-    });
+    this.store.dispatch({ type: "[Auth API] authUser", userInfo: { ...this.user } });
   }
 
-  removeAuthenficationMessage(): void{
-    this.authService.updateAuthenticationMessage(null)
+  removeAuthenficationMessage(): void {
+    this.authService.updateAuthenticationMessage(null);
   }
 }
